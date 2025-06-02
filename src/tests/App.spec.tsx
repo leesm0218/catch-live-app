@@ -6,8 +6,6 @@ import { describe, it, expect } from 'vitest';
 import { ROUTEURL } from '../config/routes.ts';
 import App from '../App';
 
-const user = userEvent.setup();
-
 describe('App', () => {
   it('첫 화면이 subscription URL 화면인지 확인', () => {
     render(
@@ -18,6 +16,7 @@ describe('App', () => {
     expect(screen.getByText('구독 페이지 입니다')).toBeInTheDocument();
   });
   it('구독 페이지가 정상적으로 출력되는지 확인', async () => {
+    const user = userEvent.setup();
     render(
       <MemoryRouter initialEntries={[ROUTEURL.SUBSCRIPTION]}>
         <App />
@@ -28,15 +27,14 @@ describe('App', () => {
     await user.click(screen.getByText('녹화목록'));
     expect(screen.getByText('녹화목록 페이지 입니다')).toBeInTheDocument();
 
-    // 네비게이션 바에서 "알림" 버튼 클릭
     await user.click(screen.getByText('알림'));
     expect(screen.getByText('알림 페이지 입니다')).toBeInTheDocument();
 
-    // 네비게이션 바에서 "마이 페이지" 버튼 클릭
     await user.click(screen.getByText('마이 페이지'));
     expect(screen.getByText('마이 페이지 입니다')).toBeInTheDocument();
   });
   it('녹화목록 페이지가 정상적으로 출력되는지 확인', async () => {
+    const user = userEvent.setup();
     render(
       <MemoryRouter initialEntries={[ROUTEURL.RECORDING]}>
         <App />
@@ -54,6 +52,7 @@ describe('App', () => {
     expect(screen.getByText('마이 페이지 입니다')).toBeInTheDocument();
   });
   it('알림 페이지가 정상적으로 출력되는지 확인', async () => {
+    const user = userEvent.setup();
     render(
       <MemoryRouter initialEntries={[ROUTEURL.NOTIFICATION]}>
         <App />
@@ -71,6 +70,7 @@ describe('App', () => {
     expect(screen.getByText('마이 페이지 입니다')).toBeInTheDocument();
   });
   it('마이 페이지가 정상적으로 출력되는지 확인', async () => {
+    const user = userEvent.setup();
     render(
       <MemoryRouter initialEntries={[ROUTEURL.PROFILE]}>
         <App />
