@@ -1,5 +1,5 @@
 import react from 'react';
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 type NavigationButtonProps = {
   navigationURL: string;
@@ -14,9 +14,13 @@ export function NavigationButton(props: NavigationButtonProps) {
   const [buttonIcon, setButtonIcon] = react.useState(icon);
   const navigate = useNavigate();
 
+  const buttonStyle = 'flex-1 flex flex-col h-full min-h-0';
+  const buttonImageStyle = 'flex-[8_0_0%] min-h-0 object-contain';
+  const buttonTextStyle = 'flex-1 min-h-0';
+  
   return (
     <button
-      className="flex-1 flex flex-col h-full min-h-0"
+      className={buttonStyle}
       onMouseEnter={() => setButtonIcon(hoverIcon)}
       onTouchStart={(ev) => {
         ev.preventDefault();
@@ -33,9 +37,13 @@ export function NavigationButton(props: NavigationButtonProps) {
         navigate(navigationURL);
       }}
     >
-      <img className="flex-[8_0_0%] min-h-0 object-contain" src={buttonIcon} alt={alt} />
-      <div className="flex-1 min-h-0">{labelText}</div>
-      <div className="flex-1 min-h-0"></div>
+      <img
+        className={buttonImageStyle}
+        src={buttonIcon}
+        alt={alt}
+      />
+      <div className={buttonTextStyle}>{labelText}</div>
+      <div className={buttonTextStyle}></div>
     </button>
   );
 }
