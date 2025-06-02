@@ -1,5 +1,7 @@
+import { NavigationBar } from './components/NavigationBar';
+
 function App() {
-  return <div className="text-4xl text-blue-500">Hello, CatchLive!</div>;
+  return <NavigationBar />;
 }
 
 export default App;

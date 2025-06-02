@@ -1,0 +1,15 @@
+.bottomNavBar {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100vw;
+  z-index: 100;
+  display: flex;
+}
+
+.bottomNavBarInner {
+  display: flex;
+  width: 100%;
+  width: 480px;
+  height: 120px;
+}
