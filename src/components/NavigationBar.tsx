@@ -1,6 +1,5 @@
 import { ROUTEURL, IMAGELOCATION } from '../config/routes';
 import { NavigationButton } from './NavigationButton';
-import styles from './navigationBar.module.css';
 
 const navigationButtons = [
   {
@@ -35,8 +34,8 @@ const navigationButtons = [
 
 export function NavigationBar() {
   return (
-    <div className={styles.bottomNavBar}>
-      <div className={styles.bottomNavBarInner}>
+    <div className="fixed left-0 bottom-0 w-screen flex justify-center">
+      <div className="flex w-[480px] h-[120px] bg-purple-500">
         {navigationButtons.map((props) => (
           <NavigationButton key={props.navigationURL} {...props} />
         ))}
