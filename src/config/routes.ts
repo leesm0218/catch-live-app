@@ -26,5 +26,3 @@ export const IMAGELOCATION = {
   PROFILEICON: assetLocation + ROUTESTRING.PROFILE + iconFile,
   PROFILEHOVERICON: assetLocation + ROUTESTRING.PROFILE + hoverIcon,
 };
-
-export const maxContentWidth = 480;
