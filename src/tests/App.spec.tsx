@@ -15,6 +15,7 @@ describe('App', () => {
     );
     expect(screen.getByText('구독 페이지 입니다')).toBeInTheDocument();
   });
+
   it('구독 페이지가 정상적으로 출력되는지 확인', async () => {
     const user = userEvent.setup();
     render(
@@ -33,6 +34,7 @@ describe('App', () => {
     await user.click(screen.getByText('마이 페이지'));
     expect(screen.getByText('마이 페이지 입니다')).toBeInTheDocument();
   });
+
   it('녹화목록 페이지가 정상적으로 출력되는지 확인', async () => {
     const user = userEvent.setup();
     render(
@@ -51,6 +53,7 @@ describe('App', () => {
     await user.click(screen.getByText('마이 페이지'));
     expect(screen.getByText('마이 페이지 입니다')).toBeInTheDocument();
   });
+
   it('알림 페이지가 정상적으로 출력되는지 확인', async () => {
     const user = userEvent.setup();
     render(
@@ -69,6 +72,7 @@ describe('App', () => {
     await user.click(screen.getByText('마이 페이지'));
     expect(screen.getByText('마이 페이지 입니다')).toBeInTheDocument();
   });
+
   it('마이 페이지가 정상적으로 출력되는지 확인', async () => {
     const user = userEvent.setup();
     render(
