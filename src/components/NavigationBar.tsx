@@ -32,13 +32,14 @@ const navigationButtons = [
   },
 ];
 
-const navigationBackgroundStyle = 'fixed left-0 bottom-0 w-background flex justify-center';
-const navigationConetntStyle = 'flex w-content h-navigationBar bg-purple-500';
+const navigationBackgroundStyle =
+ 'fixed left-0 bottom-0 w-background flex justify-center';
+const navigationConetentStyle = 'flex w-content h-navigationBar bg-purple-500';
 
 export function NavigationBar() {
   return (
-    <div className = {navigationBackgroundStyle}>
-      <div className={navigationConetntStyle}>
+    <div className={navigationBackgroundStyle}>
+      <div className={navigationConetentStyle}>
         {navigationButtons.map((props) => (
           <NavigationButton key={props.navigationURL} {...props} />
         ))}

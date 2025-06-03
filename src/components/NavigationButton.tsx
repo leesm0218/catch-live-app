@@ -17,7 +17,7 @@ export function NavigationButton(props: NavigationButtonProps) {
   const buttonStyle = 'flex-1 flex flex-col h-full min-h-0';
   const buttonImageStyle = 'flex-[8_0_0%] min-h-0 object-contain';
   const buttonTextStyle = 'flex-1 min-h-0';
-  
+
   return (
     <button
       className={buttonStyle}
@@ -37,11 +37,7 @@ export function NavigationButton(props: NavigationButtonProps) {
         navigate(navigationURL);
       }}
     >
-      <img
-        className={buttonImageStyle}
-        src={buttonIcon}
-        alt={alt}
-      />
+      <img className={buttonImageStyle} src={buttonIcon} alt={alt} />
       <div className={buttonTextStyle}>{labelText}</div>
       <div className={buttonTextStyle}></div>
     </button>
