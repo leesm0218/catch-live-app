@@ -1,9 +1,9 @@
 import react from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
-  navigationButtonStyle,
-  navigationButtonImageStyle,
-  navigationButtonTextStyle,
+  NAVIGATION_BUTTON_STYLE,
+  NAVIGATION_BUTTON_IMAGE_STYLE,
+  NAVIGATION_BUTTON_TEXT_STYLE,
 } from '../../constants/styles';
 
 import type { NavigationButtonProps } from '../../types/navigationBar/navigationBarTypes';
@@ -15,7 +15,7 @@ export function NavigationButton(props: NavigationButtonProps) {
 
   return (
     <button
-      className={navigationButtonStyle}
+      className={NAVIGATION_BUTTON_STYLE}
       onMouseEnter={() => setButtonIcon(hoverIcon)}
       onTouchStart={(ev) => {
         ev.preventDefault();
@@ -32,8 +32,12 @@ export function NavigationButton(props: NavigationButtonProps) {
         navigate(navigationURL);
       }}
     >
-      <img className={navigationButtonImageStyle} src={buttonIcon} alt={alt} />
-      <div className={navigationButtonTextStyle}>{labelText}</div>
+      <img
+        className={NAVIGATION_BUTTON_IMAGE_STYLE}
+        src={buttonIcon}
+        alt={alt}
+      />
+      <div className={NAVIGATION_BUTTON_TEXT_STYLE}>{labelText}</div>
     </button>
   );
 }

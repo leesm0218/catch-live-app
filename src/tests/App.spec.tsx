@@ -3,7 +3,7 @@ import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom';
 import { MemoryRouter } from 'react-router-dom';
 import { describe, it, expect } from 'vitest';
-import { ROUTEURL } from '../constants/routers';
+import { ROUTE_URL_FULL } from '../constants/routers';
 import App from '../App';
 
 describe('App', () => {
@@ -19,7 +19,7 @@ describe('App', () => {
   it('구독 페이지가 정상적으로 출력되는지 확인', async () => {
     const user = userEvent.setup();
     render(
-      <MemoryRouter initialEntries={[ROUTEURL.SUBSCRIPTION]}>
+      <MemoryRouter initialEntries={[ROUTE_URL_FULL.SUBSCRIPTION]}>
         <App />
       </MemoryRouter>
     );
@@ -38,7 +38,7 @@ describe('App', () => {
   it('녹화목록 페이지가 정상적으로 출력되는지 확인', async () => {
     const user = userEvent.setup();
     render(
-      <MemoryRouter initialEntries={[ROUTEURL.RECORDING]}>
+      <MemoryRouter initialEntries={[ROUTE_URL_FULL.RECORDING]}>
         <App />
       </MemoryRouter>
     );
@@ -57,7 +57,7 @@ describe('App', () => {
   it('알림 페이지가 정상적으로 출력되는지 확인', async () => {
     const user = userEvent.setup();
     render(
-      <MemoryRouter initialEntries={[ROUTEURL.NOTIFICATION]}>
+      <MemoryRouter initialEntries={[ROUTE_URL_FULL.NOTIFICATION]}>
         <App />
       </MemoryRouter>
     );
@@ -76,7 +76,7 @@ describe('App', () => {
   it('마이 페이지가 정상적으로 출력되는지 확인', async () => {
     const user = userEvent.setup();
     render(
-      <MemoryRouter initialEntries={[ROUTEURL.PROFILE]}>
+      <MemoryRouter initialEntries={[ROUTE_URL_FULL.PROFILE]}>
         <App />
       </MemoryRouter>
     );

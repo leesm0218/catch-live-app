@@ -1,15 +1,15 @@
-import { navigationButtons } from '../../constants/navigationBar/navigationBarConstants';
+import { NAVIGATION_BUTTON_LIST } from '../../constants/navigationBar/navigationBarConstants';
 import { NavigationButton } from './NavigationButton';
 import {
-  navigationBackgroundStyle,
-  navigationConetentStyle,
+  NAVIGATION_BACKGROUND_STYLE,
+  NAVIGATION_CONTENT_STYLE,
 } from '../../constants/styles';
 
 export function NavigationBar() {
   return (
-    <div className={navigationBackgroundStyle}>
-      <div className={navigationConetentStyle}>
-        {navigationButtons.map((props) => (
+    <div className={NAVIGATION_BACKGROUND_STYLE}>
+      <div className={NAVIGATION_CONTENT_STYLE}>
+        {NAVIGATION_BUTTON_LIST.map((props) => (
           <NavigationButton key={props.navigationURL} {...props} />
         ))}
       </div>
