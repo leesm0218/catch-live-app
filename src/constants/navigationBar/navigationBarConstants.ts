@@ -1,4 +1,4 @@
-import { ROUTE_STRING, ROUTE_URL_FULL } from '../routers';
+import { ROUTE_STRING, ROUTE_URL_FULL } from '@/constants/routers';
 
 const assetLocation = '/';
 const iconFile = '_normal.png';

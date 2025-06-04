@@ -1,8 +1,8 @@
 import { Routes, Route } from 'react-router-dom';
-import { Layout } from './pages/Home/Layout';
-import { ROUTE_STRING } from './constants/routers';
+import { Layout } from '@/pages/Home/Layout';
+import { ROUTE_STRING } from '@/constants/routers';
 
-function App() {
+const App = () => {
   return (
     <Routes>
       <Route path="/" element={<div>로그인 페이지 입니다</div>} />
@@ -34,6 +34,6 @@ function App() {
       </Route>
     </Routes>
   );
-}
+};
 
 export default App;
