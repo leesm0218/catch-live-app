@@ -3,17 +3,17 @@ import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom';
 import { MemoryRouter } from 'react-router-dom';
 import { describe, it, expect } from 'vitest';
-import { ROUTEURL } from '../config/routes.ts';
+import { ROUTEURL } from '../constants/routers';
 import App from '../App';
 
 describe('App', () => {
-  it('첫 화면이 subscription URL 화면인지 확인', () => {
+  it('첫 화면이 로그인 URL 화면인지 확인', () => {
     render(
       <MemoryRouter initialEntries={['/']}>
         <App />
       </MemoryRouter>
     );
-    expect(screen.getByText('구독 페이지 입니다')).toBeInTheDocument();
+    expect(screen.getByText('로그인 페이지 입니다')).toBeInTheDocument();
   });
 
   it('구독 페이지가 정상적으로 출력되는지 확인', async () => {
