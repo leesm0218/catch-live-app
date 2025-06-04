@@ -1,6 +1,19 @@
-export const ROUTESTRING = {
+export const ROUTE_STRING = {
+  LOGIN: 'login',
+  SIGNUP: 'signup',
+  HOME: 'home',
   SUBSCRIPTION: 'subscription',
   RECORDING: 'recording',
   NOTIFICATION: 'notification',
   PROFILE: 'profile',
+};
+
+export const ROUTE_URL_FULL = {
+  LOGIN: '/' + ROUTE_STRING.LOGIN,
+  SIGNUP: '/' + ROUTE_STRING.SIGNUP,
+  HOME: '/' + ROUTE_STRING.HOME,
+  SUBSCRIPTION: '/' + ROUTE_STRING.HOME + '/' + ROUTE_STRING.SUBSCRIPTION,
+  RECORDING: '/' + ROUTE_STRING.HOME + '/' + ROUTE_STRING.RECORDING,
+  NOTIFICATION: '/' + ROUTE_STRING.HOME + '/' + ROUTE_STRING.NOTIFICATION,
+  PROFILE: '/' + ROUTE_STRING.HOME + '/' + ROUTE_STRING.PROFILE,
 };
