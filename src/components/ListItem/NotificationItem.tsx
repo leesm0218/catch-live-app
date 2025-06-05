@@ -1,0 +1,14 @@
+import { NOTIFICATION_STYLE as style } from '@/constants/styles';
+import type { NotificationItemProps } from '@/types/notification/notificationTypes';
+
+export const NotificationItem = (props: NotificationItemProps) => {
+  const { notificationId, content, createdAt } = props;
+
+  return (
+    <div className={style.ITEM}>
+      <div>{notificationId}</div>
+      <div>{content}</div>
+      <div>{createdAt}</div>
+    </div>
+  );
+};

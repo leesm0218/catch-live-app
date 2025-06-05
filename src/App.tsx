@@ -2,6 +2,8 @@ import { Routes, Route } from 'react-router-dom';
 import { Layout } from '@/pages/Home/Layout';
 import { ROUTE_STRING } from '@/constants/routers';
 
+import { NotificationPage } from './pages/Home';
+
 const App = () => {
   return (
     <Routes>
@@ -25,7 +27,7 @@ const App = () => {
         />
         <Route
           path={ROUTE_STRING.NOTIFICATION}
-          element={<div>알림 페이지 입니다</div>}
+          element={<NotificationPage />}
         />
         <Route
           path={ROUTE_STRING.PROFILE}
