@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
   NAVIGATION_BUTTON_STYLE,
@@ -10,7 +10,7 @@ import type { NavigationButtonProps } from '@/types/navigationBar/navigationBarT
 
 export const NavigationButton = (props: NavigationButtonProps) => {
   const { navigationURL, alt, icon, hoverIcon, labelText } = props;
-  const [buttonIcon, setButtonIcon] = React.useState(icon);
+  const [buttonIcon, setButtonIcon] = useState(icon);
   const navigate = useNavigate();
 
   return (
