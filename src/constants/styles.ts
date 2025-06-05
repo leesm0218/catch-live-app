@@ -6,3 +6,12 @@ export const NAVIGATION_STYLE = {
   BUTTON_IMAGE: 'flex-[8_0_0%] min-h-0 object-contain',
   BUTTON_TEXT: 'flex-1 min-h-0',
 };
+
+//profile styles
+export const PROFILE_STYLE = {
+  BACKGROUND: 'flex-1 flex flex-col justify-center items-center',
+  TITLE: 'top-0 left-0 width-content height-[60px]',
+  BUTTON_BOX: 'flex w-content flex-row justify-stretch items-center',
+  BUTTON_LOGOUT: 'flex-1 text-center',
+  BUTTON_DELETE_ACCOUNT: 'flex-1 text-center',
+};

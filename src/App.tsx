@@ -2,6 +2,8 @@ import { Routes, Route } from 'react-router-dom';
 import { Layout } from '@/pages/Home/Layout';
 import { ROUTE_STRING } from '@/constants/routers';
 
+import { ProfilePage } from './pages/Home';
+
 const App = () => {
   return (
     <Routes>
@@ -27,10 +29,7 @@ const App = () => {
           path={ROUTE_STRING.NOTIFICATION}
           element={<div>알림 페이지 입니다</div>}
         />
-        <Route
-          path={ROUTE_STRING.PROFILE}
-          element={<div>마이 페이지 입니다</div>}
-        />
+        <Route path={ROUTE_STRING.PROFILE} element={<ProfilePage />} />
       </Route>
     </Routes>
   );
