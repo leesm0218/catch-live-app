@@ -13,7 +13,7 @@ describe('App', () => {
         <App />
       </MemoryRouter>
     );
-    expect(screen.getByText('로그인 페이지 입니다')).toBeInTheDocument();
+    expect(screen.getByText('로그인')).toBeInTheDocument();
   });
 
   it('구독 페이지가 정상적으로 출력되는지 확인', async () => {
