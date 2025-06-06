@@ -1,4 +1,4 @@
-import { LOGIN_BUTTON_STYLE } from '@/constants/styles';
+import { LOGIN_STYLE } from "@/constants/styles";
 
 const KakaoLoginButton = () => {
   const handleLogin = () => {
@@ -17,7 +17,7 @@ const KakaoLoginButton = () => {
       <img
         src="/src/assets/icons/login_icon_kakao.png"
         alt="카카오 로그인"
-        className={LOGIN_BUTTON_STYLE}
+        className={LOGIN_STYLE.button}
       />
     </button>
   );

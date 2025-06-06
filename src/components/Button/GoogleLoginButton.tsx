@@ -1,4 +1,4 @@
-import { LOGIN_BUTTON_STYLE } from "@/constants/styles";
+import { LOGIN_STYLE } from '@/constants/styles';
 
 const GoogleLoginButton = () => {
   const handleLogin = () => {
@@ -18,10 +18,10 @@ const GoogleLoginButton = () => {
       <img
         src="/src/assets/icons/login_icon_google.png"
         alt="구글 로그인"
-        className={LOGIN_BUTTON_STYLE}
+        className={LOGIN_STYLE.button}
       />
     </button>
   );
 };
 
-export default GoogleLoginButton
+export default GoogleLoginButton;

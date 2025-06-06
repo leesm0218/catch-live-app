@@ -1,4 +1,4 @@
-import { LOGIN_BUTTON_STYLE } from '@/constants/styles';
+import { LOGIN_STYLE } from "@/constants/styles";
 
 const NaverLoginButton = () => {
   const handleLogin = () => {
@@ -19,7 +19,7 @@ const NaverLoginButton = () => {
       <img
         src="/src/assets/icons/login_icon_naver.png"
         alt="네이버 로그인"
-        className={LOGIN_BUTTON_STYLE}
+        className={LOGIN_STYLE.button}
       />
     </button>
   );

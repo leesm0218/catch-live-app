@@ -1,3 +1,4 @@
+import { LOGIN_STYLE } from '@/constants/styles';
 import type { ProviderType } from '@/types/auth';
 import axios from 'axios';
 import { useEffect } from 'react';
@@ -51,11 +52,7 @@ const OauthRedirectHandler = () => {
     login();
   });
 
-  return (
-    <div className="flex flex-col items-center justify-center h-screen">
-      로그인 처리 중입니다...
-    </div>
-  );
+  return <div className={LOGIN_STYLE.loading}>로그인 처리 중입니다...</div>;
 };
 
 export default OauthRedirectHandler;

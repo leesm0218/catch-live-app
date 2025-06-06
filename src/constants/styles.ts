@@ -7,4 +7,14 @@ export const NAVIGATION_STYLE = {
   BUTTON_TEXT: 'flex-1 min-h-0',
 };
 
-export const LOGIN_BUTTON_STYLE = 'w-full h-full object-cover rounded-full';
+export const HEADER_STYLE = {
+  title: 'text-2xl font-bold mb-8',
+};
+
+export const LOGIN_STYLE = {
+  loginBox: 'flex flex-col items-center justify-center h-screen',
+  paragraph: 'text-gray-500 mb-6',
+  buttonBox: 'flex gap-6',
+  button: 'w-full h-full object-cover rounded-full',
+  loading: 'flex flex-col items-center justify-center h-screen',
+};
