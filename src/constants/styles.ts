@@ -9,3 +9,5 @@ export const NAVIGATION_BUTTON_STYLE =
 export const NAVIGATION_BUTTON_IMAGE_STYLE =
   'flex-[8_0_0%] min-h-0 object-contain';
 export const NAVIGATION_BUTTON_TEXT_STYLE = 'flex-1 min-h-0';
+
+export const LOGIN_BUTTON_STYLE = 'w-full h-full object-cover rounded-full';
