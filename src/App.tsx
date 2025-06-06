@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
-import { Layout } from './pages/Home/Layout';
-import { ROUTE_STRING } from './constants/routers';
+import { Layout } from '@/pages/Home/Layout';
+import { ROUTE_STRING } from '@/constants/routers';
 import { Login } from './pages/Auth/Login';
 import OauthRedirectHandler from './components/OauthRedirectHandler';
 
