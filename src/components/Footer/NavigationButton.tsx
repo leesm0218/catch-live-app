@@ -1,21 +1,16 @@
-import react from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import {
-  NAVIGATION_BUTTON_STYLE,
-  NAVIGATION_BUTTON_IMAGE_STYLE,
-  NAVIGATION_BUTTON_TEXT_STYLE,
-} from '../../constants/styles';
+import { NAVIGATION_STYLE as style } from '@/constants/styles';
+import type { NavigationButtonProps } from '@/types/navigationBar/navigationBarTypes';
 
-import type { NavigationButtonProps } from '../../types/navigationBar/navigationBarTypes';
-
-export function NavigationButton(props: NavigationButtonProps) {
+export const NavigationButton = (props: NavigationButtonProps) => {
   const { navigationURL, alt, icon, hoverIcon, labelText } = props;
-  const [buttonIcon, setButtonIcon] = react.useState(icon);
+  const [buttonIcon, setButtonIcon] = React.useState(icon);
   const navigate = useNavigate();
 
   return (
     <button
-      className={NAVIGATION_BUTTON_STYLE}
+      className={style.BUTTON}
       onMouseEnter={() => setButtonIcon(hoverIcon)}
       onTouchStart={(ev) => {
         ev.preventDefault();
@@ -32,12 +27,8 @@ export function NavigationButton(props: NavigationButtonProps) {
         navigate(navigationURL);
       }}
     >
-      <img
-        className={NAVIGATION_BUTTON_IMAGE_STYLE}
-        src={buttonIcon}
-        alt={alt}
-      />
-      <div className={NAVIGATION_BUTTON_TEXT_STYLE}>{labelText}</div>
+      <img className={style.BUTTON_IMAGE} src={buttonIcon} alt={alt} />
+      <div className={style.BUTTON_TEXT}>{labelText}</div>
     </button>
   );
-}
+};
