@@ -2,15 +2,14 @@ import { Routes, Route } from 'react-router-dom';
 import { Layout } from './pages/Home/Layout';
 import { ROUTE_STRING } from './constants/routers';
 import { Login } from './pages/Auth/Login';
+import OauthRedirectHandler from './components/OauthRedirectHandler';
 
-const App: React.FC = () => {
+const App = () => {
   return (
     <Routes>
       <Route path="/" element={<Login />} />
-      <Route
-        path={ROUTE_STRING.LOGIN}
-        element={<Login />}
-      />
+      <Route path={ROUTE_STRING.OAUTH_REDIRECT} element={<OauthRedirectHandler />} />
+      <Route path={ROUTE_STRING.LOGIN} element={<Login />} />
       <Route
         path={ROUTE_STRING.SIGNUP}
         element={<div>회원가입 페이지 입니다</div>}
