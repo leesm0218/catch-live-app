@@ -1,8 +1,9 @@
 import { Routes, Route } from 'react-router-dom';
 import { ROUTE_STRING } from '@/constants/routers';
-import OauthRedirectHandler from './pages/OauthRedirect';
+import OauthRedirect from './pages/OauthRedirect';
 import Login from './pages/Login';
 import Home from './pages/Home';
+import LoginErrorBoundary from './pages/Error/LoginErrorBoundary';
 
 const App = () => {
   return (
@@ -10,7 +11,11 @@ const App = () => {
       <Route path="/" element={<Login />} />
       <Route
         path={ROUTE_STRING.OAUTH_REDIRECT}
-        element={<OauthRedirectHandler />}
+        element={
+          <LoginErrorBoundary>
+            <OauthRedirect />
+          </LoginErrorBoundary>
+        }
       />
       <Route path={ROUTE_STRING.LOGIN} element={<Login />} />
       <Route

@@ -5,7 +5,7 @@ import { useParams, useSearchParams } from 'react-router-dom';
 import useLoginMutation from '@/hooks/useLoginMutation';
 import { isAuthProvider } from '@/utils/login';
 
-const OauthRedirectHandler = () => {
+const OauthRedirect = () => {
   const { provider } = useParams<{ provider: ProviderType }>();
   const [searchParams] = useSearchParams();
 
@@ -25,4 +25,4 @@ const OauthRedirectHandler = () => {
   return <div className={LOGIN_STYLE.loading}>로그인 중입니다</div>;
 };
 
-export default OauthRedirectHandler;
+export default OauthRedirect;
