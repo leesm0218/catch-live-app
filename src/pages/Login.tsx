@@ -1,7 +1,7 @@
-import GoogleLoginButton from '@/components/Button/GoogleLoginButton';
-import KakaoLoginButton from '@/components/Button/KakaoLoginButton';
-import NaverLoginButton from '@/components/Button/NaverLoginButton';
-import Header from '@/components/Header';
+import GoogleLoginButton from '@/components/login/GoogleLoginButton';
+import KakaoLoginButton from '@/components/login/KakaoLoginButton';
+import NaverLoginButton from '@/components/login/NaverLoginButton';
+import Header from '@/components/common/Header';
 import { LOGIN_STYLE } from '@/constants/styles';
 
 const Login = () => {

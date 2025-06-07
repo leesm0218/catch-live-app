@@ -1,9 +1,16 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { NAVIGATION_STYLE as style } from '@/constants/styles';
-import type { NavigationButtonProps } from '@/types/navigationBar/navigationBarTypes';
 
-export const NavigationButton = (props: NavigationButtonProps) => {
+type NavigationButtonProps = {
+  navigationURL: string;
+  alt: string;
+  icon: string;
+  hoverIcon: string;
+  labelText: string;
+};
+
+const NavigationButton = (props: NavigationButtonProps) => {
   const { navigationURL, alt, icon, hoverIcon, labelText } = props;
   const [buttonIcon, setButtonIcon] = React.useState(icon);
   const navigate = useNavigate();
@@ -32,3 +39,5 @@ export const NavigationButton = (props: NavigationButtonProps) => {
     </button>
   );
 };
+
+export default NavigationButton;

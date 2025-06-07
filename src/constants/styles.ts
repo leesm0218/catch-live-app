@@ -8,7 +8,8 @@ export const NAVIGATION_STYLE = {
 };
 
 export const HEADER_STYLE = {
-  title: 'text-2xl font-bold mb-8',
+  titleContainer: 'p-4 pb-2',
+  titleText: 'text-3xl font-bold text-center mb-2',
 };
 
 export const LOGIN_STYLE = {
