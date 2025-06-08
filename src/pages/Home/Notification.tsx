@@ -1,12 +1,14 @@
 import { NOTIFICATION_STYLE as style } from '@/constants/styles';
 import { NotificationItem } from '@/components/ListItem';
 import { useQuery } from '@tanstack/react-query';
+import { pageSize } from '@/constants/notification/notificationConstants';
 import type { NotificationItemProps } from '@/types/notification/notificationTypes';
 
 const notificationURL = import.meta.env.VITE_API_BASE_URL + 'notifications';
 
-const fetchNotifications = async () => {
-  const res = await fetch(notificationURL, {
+const fetchNotifications = async (size: number, cursor: number) => {
+  const url = notificationURL + `?size=${size}&cursor=${cursor}`;
+  const res = await fetch(url, {
     headers: {},
   });
   if (!res.ok) {
@@ -17,9 +19,11 @@ const fetchNotifications = async () => {
 };
 
 export const NotificationPage = () => {
+  const size = pageSize;
+  const cursor = 7;
   const { data, isLoading, error } = useQuery({
     queryKey: [''],
-    queryFn: () => fetchNotifications(),
+    queryFn: () => fetchNotifications(size, cursor),
   });
 
   if (isLoading) {
