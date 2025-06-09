@@ -17,7 +17,7 @@ const NavigationButton = (props: NavigationButtonProps) => {
 
   return (
     <button
-      className={style.BUTTON}
+      className={style.button}
       onMouseEnter={() => setButtonIcon(hoverIcon)}
       onTouchStart={(ev) => {
         ev.preventDefault();
@@ -34,8 +34,8 @@ const NavigationButton = (props: NavigationButtonProps) => {
         navigate(navigationURL);
       }}
     >
-      <img className={style.BUTTON_IMAGE} src={buttonIcon} alt={alt} />
-      <div className={style.BUTTON_TEXT}>{labelText}</div>
+      <img className={style.buttonImage} src={buttonIcon} alt={alt} />
+      <div className={style.buttonText}>{labelText}</div>
     </button>
   );
 };

@@ -4,6 +4,7 @@ import OauthRedirect from './pages/OauthRedirect';
 import Login from './pages/Login';
 import Home from './pages/Home';
 import LoginErrorBoundary from './pages/Error/LoginErrorBoundary';
+import Recording from './pages/Home/Recording';
 
 import { NotificationPage } from './pages/Home';
 
@@ -29,10 +30,7 @@ const App = () => {
           path={ROUTE_STRING.SUBSCRIPTION}
           element={<div>구독 페이지 입니다</div>}
         />
-        <Route
-          path={ROUTE_STRING.RECORDING}
-          element={<div>녹화목록 페이지 입니다</div>}
-        />
+        <Route path={ROUTE_STRING.RECORDING} element={<Recording />} />
         <Route
           path={ROUTE_STRING.NOTIFICATION}
           element={<NotificationPage />}

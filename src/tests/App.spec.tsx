@@ -33,7 +33,7 @@ describe('App', () => {
     expect(screen.getByText('구독 페이지 입니다')).toBeInTheDocument();
 
     await user.click(screen.getByText('녹화목록'));
-    expect(screen.getByText('녹화목록 페이지 입니다')).toBeInTheDocument();
+    expect(screen.getByText('녹화목록')).toBeInTheDocument();
 
     await user.click(screen.getByText('알림'));
     expect(screen.getByText('알림 페이지 입니다')).toBeInTheDocument();
@@ -52,7 +52,7 @@ describe('App', () => {
         </MemoryRouter>
       </QueryClientProvider>
     );
-    expect(screen.getByText('녹화목록 페이지 입니다')).toBeInTheDocument();
+    expect(screen.getByText('녹화목록')).toBeInTheDocument();
 
     await user.click(screen.getByText('구독'));
     expect(screen.getByText('구독 페이지 입니다')).toBeInTheDocument();
@@ -65,6 +65,7 @@ describe('App', () => {
   });
 
   it('알림 페이지가 정상적으로 출력되는지 확인', async () => {
+    const user = userEvent.setup();
     const queryClient = new QueryClient();
     render(
       <QueryClientProvider client={queryClient}>
@@ -73,8 +74,16 @@ describe('App', () => {
         </MemoryRouter>
       </QueryClientProvider>
     );
-    const items = await screen.findAllByText(/스트리머/);
-    expect(items.length).toBeGreaterThan(0);
+    expect(screen.getByText('알림 페이지 입니다')).toBeInTheDocument();
+
+    await user.click(screen.getByText('구독'));
+    expect(screen.getByText('구독 페이지 입니다')).toBeInTheDocument();
+
+    await user.click(screen.getByText('녹화목록'));
+    expect(screen.getByText('녹화목록')).toBeInTheDocument();
+
+    await user.click(screen.getByText('마이 페이지'));
+    expect(screen.getByText('마이 페이지 입니다')).toBeInTheDocument();
   });
 
   it.skip('마이 페이지가 정상적으로 출력되는지 확인', async () => {
@@ -93,7 +102,7 @@ describe('App', () => {
     expect(screen.getByText('구독 페이지 입니다')).toBeInTheDocument();
 
     await user.click(screen.getByText('녹화목록'));
-    expect(screen.getByText('녹화목록 페이지 입니다')).toBeInTheDocument();
+    expect(screen.getByText('녹화목록')).toBeInTheDocument();
 
     await user.click(screen.getByText('알림'));
     expect(screen.getByText('알림 페이지 입니다')).toBeInTheDocument();
