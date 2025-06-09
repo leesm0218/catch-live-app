@@ -1,15 +1,80 @@
 //navigationBar styles
 export const NAVIGATION_STYLE = {
-  BACKGROUND: 'fixed left-0 bottom-0 w-background flex justify-center',
-  BUTTON_LIST: 'flex w-content h-navigationBar bg-purple-500',
-  BUTTON: 'flex-1 flex flex-col h-full min-h-0 pb-4',
-  BUTTON_IMAGE: 'flex-[8_0_0%] min-h-0 object-contain',
-  BUTTON_TEXT: 'flex-1 min-h-0',
+  background:
+    'fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[720px] h-16 bg-purple-500 flex justify-center shadow-xl z-10',
+  buttonList: 'flex w-full h-full items-center justify-around',
+  button: 'flex-1 flex flex-col items-center justify-center',
+  buttonImage: 'h-6 md:h-8 object-contain',
+  buttonText: 'text-xs mt-1 font-bold',
+};
+//Layout styles
+export const LAYOUT_STYLE = {
+  screenLayout: 'h-screen flex flex-col',
+  mainContainer: 'flex-1 overflow-y-auto flex justify-center pb-4',
+  pageContent: 'w-full max-w-screen-md px-4',
 };
 
+//Recording styles
+export const RECORDING_STYLE = {
+  headerContainer: 'text-3xl font-bold text-center mb-2',
+  pannelContainer: 'flex justify-between items-center px-4 mb-2',
+  body: 'px-4 space-y-4',
+};
+//RecordingItem styles
+export const RECORDING_ITEM_STYLE = {
+  header: 'flex items-start justify-between',
+  container: 'flex flex-col gap-1 p-4 rounded-xl shadow-sm border bg-white',
+  headerLeft: 'flex items-center gap-2',
+  liveDot: 'w-3 h-3 rounded-full',
+  liveText: 'text-xs font-semibold text-black-600',
+  platformText: 'text-xs font-semibold text-purple-600',
+  dateText: 'text-xs text-gray-400',
+
+  titleRow: 'flex items-center justify-between',
+  titleText: 'text-base font-bold',
+  statusBadge: 'px-2 py-0.5 text-xs rounded-full',
+  footer: 'flex items-center justify-between',
+  channelText: 'text-sm text-gray-600',
+  downloadButton:
+    'w-12 h-12 rounded-full bg-white shadow-md flex items-center justify-center hover:scale-110 hover:shadow-xl transition-transform duration-200',
+  downloadIcon: 'w-6 h-6 text-gray-700',
+
+  liveStatus: 'bg-red-500',
+  offlineStatus: 'bg-gray-500',
+  completedStatus: 'bg-green-100 text-green-700',
+  recordingStatus: 'bg-yellow-100  text-yellow-700',
+  failedStatus: 'bg-red-200 text-red-700',
+};
+
+//Header styles
 export const HEADER_STYLE = {
   titleContainer: 'p-4 pb-2',
   titleText: 'text-3xl font-bold text-center mb-2',
+};
+
+//SearchBar styles
+export const SEARCH_BAR_STYLE = {
+  container: 'p-4 pb-2',
+  input:
+    'w-full rounded-xl text-lg px-4 py-2 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500',
+};
+
+//FilterButton styles
+export const FILTER_BUTTON_STYLE = {
+  button:
+    'w-1/2 flex items-center gap-1 px-4 py-2 rounded-xl border border-gray-300 text-sm',
+};
+
+//SortButton styles
+export const SORT_BUTTON_STYLE = {
+  button:
+    'w-1/2 flex items-center gap-1 px-4 py-2 rounded-xl border border-gray-300 text-sm',
+};
+
+//LoadingSpinner styles
+export const LOADING_SPINNER_STYLE = {
+  container: 'flex justify-center items-center h-48',
+  button: 'animate-spin rounded-full border-4 border-solid border-gray-200',
 };
 
 export const LOGIN_STYLE = {
