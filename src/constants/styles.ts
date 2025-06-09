@@ -41,7 +41,7 @@ export const RECORDING_ITEM_STYLE = {
 
   liveStatus: 'bg-red-500',
   offlineStatus: 'bg-gray-500',
-  compeletedStatus: 'bg-green-100 text-green-700',
+  completedStatus: 'bg-green-100 text-green-700',
   recordingStatus: 'bg-yellow-100  text-yellow-700',
   failedStatus: 'bg-red-200 text-red-700',
 };
