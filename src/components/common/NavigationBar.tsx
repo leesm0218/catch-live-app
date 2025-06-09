@@ -1,8 +1,8 @@
 import { NAVIGATION_BUTTON_LIST } from '@/constants/navigationBar/navigationBarConstants';
-import { NavigationButton } from '@/components/Footer/NavigationButton';
 import { NAVIGATION_STYLE as style } from '@/constants/styles';
+import NavigationButton from './NavigationButton';
 
-export const NavigationBar = () => {
+const NavigationBar = () => {
   return (
     <div className={style.BACKGROUND}>
       <div className={style.BUTTON_LIST}>
@@ -13,3 +13,5 @@ export const NavigationBar = () => {
     </div>
   );
 };
+
+export default NavigationBar;
