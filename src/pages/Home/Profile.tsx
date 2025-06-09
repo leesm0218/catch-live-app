@@ -1,6 +1,8 @@
 import { LogOutButton, DeleteAccountButton } from '@/components/Button';
 import { PROFILE_STYLE as style } from '@/constants/styles';
 import { useQuery } from '@tanstack/react-query';
+import { useNavigate } from 'react-router-dom';
+import { ROUTE_URL_FULL } from '@/constants/routers';
 
 const profileApiUrl = import.meta.env.VITE_API_BASE_URL + 'users/me';
 
@@ -9,6 +11,9 @@ const fetchProfile = async () => {
   const res = await fetch(url, {
     headers: {},
   });
+  if (res.status === 401) {
+    throw new Error('401');
+  }
   if (!res.ok) {
     throw new Error('유저 정보를 불러올 수 없습니다.');
   }
@@ -17,6 +22,7 @@ const fetchProfile = async () => {
 };
 
 export const ProfilePage = () => {
+  const navigate = useNavigate();
   const { data, isLoading, error } = useQuery({
     queryKey: [''],
     queryFn: () => fetchProfile(),
@@ -27,7 +33,11 @@ export const ProfilePage = () => {
   }
 
   if (error) {
-    return <div>오류 발생</div>;
+    if (error.message === '401') {
+      navigate(ROUTE_URL_FULL.LOGIN);
+    } else {
+      return <div>오류 발생</div>;
+    }
   }
 
   if (!data) {
