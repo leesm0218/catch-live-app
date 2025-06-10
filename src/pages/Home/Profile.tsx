@@ -26,6 +26,12 @@ const ProfilePage = () => {
   const { data, isLoading, error } = useQuery({
     queryKey: [''],
     queryFn: () => fetchProfile(),
+    retry: (failureCount, error) => {
+      if (error instanceof Error && error.message === '401') {
+        return false;
+      }
+      return true;
+    },
   });
 
   if (isLoading) {
