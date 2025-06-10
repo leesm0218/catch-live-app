@@ -11,6 +11,7 @@ const OauthRedirect = () => {
 
   const code = searchParams.get('code');
   const error = searchParams.get('error');
+  const state = searchParams.get('state');
 
   if (error || !code || !isAuthProvider(provider)) {
     throw new Error('로그인에 실패했습니다.');
@@ -19,8 +20,12 @@ const OauthRedirect = () => {
   const { mutateLogin } = useLoginMutation();
 
   useEffect(() => {
-    mutateLogin({ provider, authorizationCode: code });
-  }, [code, provider, mutateLogin]);
+    mutateLogin({
+      provider,
+      authorizationCode: code,
+      state: state ? state : undefined,
+    });
+  }, [code, provider, state, mutateLogin]);
 
   return <div className={LOGIN_STYLE.loading}>로그인 중입니다</div>;
 };
