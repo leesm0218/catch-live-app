@@ -4,8 +4,8 @@ import NavigationButton from './NavigationButton';
 
 const NavigationBar = () => {
   return (
-    <div className={style.BACKGROUND}>
-      <div className={style.BUTTON_LIST}>
+    <div className={style.background}>
+      <div className={style.buttonList}>
         {NAVIGATION_BUTTON_LIST.map((props) => (
           <NavigationButton key={props.navigationURL} {...props} />
         ))}
