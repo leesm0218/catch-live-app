@@ -18,8 +18,12 @@ export const LAYOUT_STYLE = {
 //profile styles
 export const PROFILE_STYLE = {
   background: 'flex-1 flex flex-col justify-center items-center',
-  button_box: 'flex w-content flex-row justify-stretch items-center',
-  button: 'flex-1 text-center',
+  info_list: 'flex flex-col',
+  info_item: 'flex-1 flex justify-between',
+  info_label: 'flex-1 text-gray-500',
+  info_value: 'flex-1 text-bold',
+  button_box: 'flex w-content flex-row justify-stretch items-center rounded-xl',
+  button: 'flex-1 text-center rounded-xl text-lg font-bold text-purple-700',
 };
 
 //Recording styles

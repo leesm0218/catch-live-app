@@ -9,7 +9,7 @@ const profileApiUrl = import.meta.env.VITE_API_BASE_URL + 'users/me';
 const fetchProfile = async () => {
   const url = profileApiUrl;
   const res = await fetch(url, {
-    headers: {},
+    headers: { accessToken: localStorage.getItem('accessToken') || '' },
   });
   if (res.status === 401) {
     throw new Error('401');
@@ -46,9 +46,20 @@ const ProfilePage = () => {
 
   return (
     <div className={style.background}>
-      <div>{data.provider}</div>
-      <div>{data.email}</div>
-      <div>{data.createdAt}</div>
+      <div className={style.info_list}>
+        <div className={style.info_item}>
+          <span className={style.info_label}>로그인 방식: </span>
+          <span className={style.info_value}>{data.provider}</span>
+        </div>
+        <div className={style.info_item}>
+          <span className={style.info_label}>이메일: </span>
+          <span className={style.info_value}>{data.email}</span>
+        </div>
+        <div className={style.info_item}>
+          <span className={style.info_label}>가입일: </span>
+          <span className={style.info_value}>{data.createdAt}</span>
+        </div>
+      </div>
       <div className={style.button_box}>
         <LogOutButton />
         <DeleteAccountButton />
