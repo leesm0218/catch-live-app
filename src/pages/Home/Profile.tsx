@@ -21,7 +21,7 @@ const fetchProfile = async () => {
   return json.data;
 };
 
-export const ProfilePage = () => {
+const ProfilePage = () => {
   const navigate = useNavigate();
   const { data, isLoading, error } = useQuery({
     queryKey: [''],
@@ -45,15 +45,16 @@ export const ProfilePage = () => {
   }
 
   return (
-    <div className={style.BACKGROUND}>
-      <div className={style.TITLE}> title</div>
+    <div className={style.background}>
       <div>{data.provider}</div>
       <div>{data.email}</div>
       <div>{data.createdAt}</div>
-      <div className={style.BUTTON_BOX}>
+      <div className={style.button_box}>
         <LogOutButton />
         <DeleteAccountButton />
       </div>
     </div>
   );
 };
+
+export default ProfilePage;

@@ -44,7 +44,7 @@ const RecordingItem = (props: RecordingItemProps) => {
       case 'RECORDING':
         return RECORDING_ITEM_STYLE.recordingStatus;
       case 'COMPLETED':
-        return RECORDING_ITEM_STYLE.compeletedStatus;
+        return RECORDING_ITEM_STYLE.completedStatus;
       case 'FAILED':
         return RECORDING_ITEM_STYLE.failedStatus;
     }

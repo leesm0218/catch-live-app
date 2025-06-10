@@ -17,11 +17,9 @@ export const LAYOUT_STYLE = {
 
 //profile styles
 export const PROFILE_STYLE = {
-  BACKGROUND: 'flex-1 flex flex-col justify-center items-center',
-  TITLE: 'top-0 left-0 width-content height-[60px]',
-  BUTTON_BOX: 'flex w-content flex-row justify-stretch items-center',
-  BUTTON_LOGOUT: 'flex-1 text-center',
-  BUTTON_DELETE_ACCOUNT: 'flex-1 text-center',
+  background: 'flex-1 flex flex-col justify-center items-center',
+  button_box: 'flex w-content flex-row justify-stretch items-center',
+  button: 'flex-1 text-center',
 };
 
 //Recording styles

@@ -6,7 +6,7 @@ import Home from './pages/Home';
 import LoginErrorBoundary from './pages/Error/LoginErrorBoundary';
 import Recording from './pages/Home/Recording';
 
-import { ProfilePage } from './pages/Home';
+import ProfilePage from '@/pages/Home/Profile';
 
 const App = () => {
   return (
