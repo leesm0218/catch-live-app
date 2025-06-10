@@ -1,4 +1,8 @@
+import Header from '@/components/common/Header';
 import NavigationBar from '@/components/common/NavigationBar';
+import { useLocation, Outlet } from 'react-router-dom';
+import { ROUTE_STRING } from '@/constants/routers';
+import { LAYOUT_STYLE } from '@/constants/styles';
 
 const Home = () => {
   const { pathname } = useLocation();

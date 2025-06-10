@@ -5,8 +5,7 @@ import Login from './pages/Login';
 import Home from './pages/Home';
 import LoginErrorBoundary from './pages/Error/LoginErrorBoundary';
 import Recording from './pages/Home/Recording';
-
-import { NotificationPage } from './pages/Home';
+import NotificationPage from '@/pages/Home/Notification';
 
 const App = () => {
   return (

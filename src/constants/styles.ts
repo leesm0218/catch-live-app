@@ -1,25 +1,24 @@
 //navigationBar styles
 export const NAVIGATION_STYLE = {
   background:
-    'fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[720px] h-16 bg-purple-500 flex justify-center shadow-xl z-10',
-  buttonList: 'flex w-full h-full items-center justify-around',
-  button: 'flex-1 flex flex-col items-center justify-center',
+    'flex justify-center w-full max-w-screen-md h-16 bg-purple-500 shadow-xl z-10',
+  buttonList: 'flex w-full h-full items-center',
+  button: 'flex-1 flex flex-col',
   buttonImage: 'h-6 md:h-8 object-contain',
   buttonText: 'text-xs mt-1 font-bold',
 };
 
 //Layout styles
 export const LAYOUT_STYLE = {
-  screenLayout: 'h-screen flex flex-col',
-  mainContainer: 'flex-1 overflow-y-auto flex justify-center pb-4',
-  pageContent: 'w-full max-w-screen-md px-4',
+  screenLayout: 'flex flex-col items-center h-screen',
+  mainContainer: 'flex-1 flex min-h-0',
+  pageContent: 'flex-1 flex flex-col min-h-0',
 };
 
 //notification styles
 export const NOTIFICATION_STYLE = {
-  background: 'flex-1 flex flex-col justify-center items-center',
-  title: 'top-0 left-0 width-content height-[60px]',
-  item_list: 'flex flex-1 overflow-y-scroll flex-col',
+  background: 'flex-1 flex flex-col min-h-0',
+  item_list: 'flex-1 flex flex-col overflow-y-auto overscroll-none',
   item: 'flex-1 max-height-100px',
 };
 
@@ -29,6 +28,7 @@ export const RECORDING_STYLE = {
   pannelContainer: 'flex justify-between items-center px-4 mb-2',
   body: 'px-4 space-y-4',
 };
+
 //RecordingItem styles
 export const RECORDING_ITEM_STYLE = {
   header: 'flex items-start justify-between',
