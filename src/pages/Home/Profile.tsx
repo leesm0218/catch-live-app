@@ -4,13 +4,16 @@ import { useQuery } from '@tanstack/react-query';
 import { useNavigate } from 'react-router-dom';
 import { ROUTE_URL_FULL } from '@/constants/routers';
 
-const profileApiUrl = import.meta.env.VITE_API_BASE_URL + 'users/me';
+const profileApiUrl = import.meta.env.VITE_API_BASE_URL + '/api/v1/users/me';
 
 const fetchProfile = async () => {
   const url = profileApiUrl;
+  const accessToken = localStorage.getItem('ACCESS_TOKEN');
   const res = await fetch(url, {
-    headers: { accessToken: localStorage.getItem('accessToken') || '' },
+    headers: { accessToken: accessToken || '' },
   });
+
+  console.log('fetchProfile', url, res.status);
   if (res.status === 401) {
     throw new Error('401');
   }
@@ -24,13 +27,13 @@ const fetchProfile = async () => {
 const ProfilePage = () => {
   const navigate = useNavigate();
   const { data, isLoading, error } = useQuery({
-    queryKey: [''],
+    queryKey: ['profile'],
     queryFn: () => fetchProfile(),
     retry: (failureCount, error) => {
       if (error instanceof Error && error.message === '401') {
         return false;
       }
-      return true;
+      return false;
     },
   });
 
