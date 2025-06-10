@@ -91,3 +91,24 @@ export const LOGIN_ERROR_FALLBACK_STYLE = {
   paragraph: 'text-red-500 mb-8',
   button: 'px-6 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600',
 };
+
+export const SIGNUP_PAGE_STYLE = {
+  constainer: 'max-w-md mx-auto mt-24 p-6',
+  progressBarbox: 'w-full h-1 bg-gray-2,00 rounded-full mb-10',
+  progressBar: 'h-1 w-1/2 bg-purple-500 rounded-full',
+  progressBarComplete: 'h-1 bg-purple-500 rounded-full',
+  h2: 'text-lg font-bold mb-10 text-left',
+  form: 'mb-10',
+  label: 'block text-sm font-medium text-gray-700 mb-2',
+  input:
+    'w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500',
+  button:
+    'w-full py-4 bg-purple-600 text-white font-bold rounded-md hover:bg-purple-700 transition disabled:opacity-50',
+  errorMessage: 'text-sm text-red-500 mt-2',
+  contentBox: 'flex flex-col items-center justify-center flex-1 py-12',
+  checkIconCircle:
+    'w-16 h-16 rounded-full bg-purple-500 flex items-center justify-center mb-6',
+  checkIcon: 'w-8 h-8 text-white',
+  paragraph: 'text-center text-base font-medium',
+  bold: 'font-bold',
+};
