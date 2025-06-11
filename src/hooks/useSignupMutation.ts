@@ -15,6 +15,7 @@ const useSignupMutation = (onErrorCallback: (errorCode: string) => void) => {
     onError: (error) => {
       if (isAxiosError(error)) {
         const errorCode = error?.response?.data?.code;
+
         onErrorCallback(errorCode);
       }
     },

@@ -13,7 +13,9 @@ const Signup = () => {
   const { provider, email } = location.state;
 
   const onErrorCallback = (errorCode: string) => {
-    if (errorCode === '3401') {
+    if (errorCode === '3400') {
+      setErrorMessage('닉네임은 2-10자 사이여야 합니다.');
+    } else if (errorCode === '3401') {
       setErrorMessage('중복된 닉네임입니다.');
     } else {
       setErrorMessage('회원가입 중 오류가 발생했습니다.');
