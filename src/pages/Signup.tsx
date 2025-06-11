@@ -10,7 +10,7 @@ const Signup = () => {
   const nicknameRef = useRef<HTMLInputElement>(null);
   const [errorMessage, setErrorMessage] = useState<string>('');
   const location = useLocation();
-  const { requestData, user } = location.state;
+  const { provider, email } = location.state;
 
   const onErrorCallback = (errorCode: string) => {
     if (errorCode === '3401') {
@@ -32,10 +32,7 @@ const Signup = () => {
 
     setErrorMessage('');
 
-    user.nickname = nickname;
-    const param = { ...requestData, user };
-
-    mutateSignup(param);
+    mutateSignup({ provider, email, nickname });
   };
 
   return (
