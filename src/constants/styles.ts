@@ -123,7 +123,7 @@ export const FILTER_MODAL_STYLE = {
 };
 
 export const SIGNUP_PAGE_STYLE = {
-  constainer: 'max-w-md mx-auto mt-24 p-6',
+  container: 'max-w-md mx-auto mt-24 p-6',
   progressBarbox: 'w-full h-1 bg-gray-2,00 rounded-full mb-10',
   progressBar: 'h-1 w-1/2 bg-purple-500 rounded-full',
   progressBarComplete: 'h-1 bg-purple-500 rounded-full',

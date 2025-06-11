@@ -38,7 +38,7 @@ const Signup = () => {
   };
 
   return (
-    <div className={SIGNUP_PAGE_STYLE.constainer}>
+    <div className={SIGNUP_PAGE_STYLE.container}>
       <Header headerTitle="회원가입" />
       <ProgressBar progress="half" />
       <h2 className={SIGNUP_PAGE_STYLE.h2}>닉네임을 입력해주세요.</h2>

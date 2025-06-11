@@ -10,7 +10,7 @@ const SignupComplete = () => {
   const navigate = useNavigate();
 
   return (
-    <div className={SIGNUP_PAGE_STYLE.constainer}>
+    <div className={SIGNUP_PAGE_STYLE.container}>
       <Header headerTitle="회원가입" />
       <ProgressBar progress="full" />
       <div className={SIGNUP_PAGE_STYLE.contentBox}>
