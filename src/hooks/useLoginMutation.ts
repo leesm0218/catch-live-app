@@ -9,10 +9,10 @@ const useLoginMutation = () => {
 
   const loginMutation = useMutation({
     mutationFn: postLogin,
-    onSuccess: ({ needSignup, accessToken }, requestDto) => {
+    onSuccess: ({ data: { needSignup, user, accessToken } }, requestDto) => {
       if (needSignup) {
         navigate(ROUTE_URL_FULL.SIGNUP, {
-          state: requestDto,
+          state: { provider: requestDto.provider, email: user.email },
         });
         return;
       }

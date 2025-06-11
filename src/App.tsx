@@ -6,6 +6,8 @@ import Home from './pages/Home';
 import LoginErrorBoundary from './pages/Error/LoginErrorBoundary';
 import Recording from './pages/Home/Recording';
 import NotificationPage from '@/pages/Home/Notification';
+import Signup from './pages/Signup';
+import SignupComplete from './pages/SignupComplete';
 
 const App = () => {
   return (
@@ -20,10 +22,8 @@ const App = () => {
         }
       />
       <Route path={ROUTE_STRING.LOGIN} element={<Login />} />
-      <Route
-        path={ROUTE_STRING.SIGNUP}
-        element={<div>회원가입 페이지 입니다</div>}
-      />
+      <Route path={ROUTE_STRING.SIGNUP} element={<Signup />} />
+      <Route path={ROUTE_STRING.SIGNUP_COMPLETE} element={<SignupComplete />} />
       <Route path={ROUTE_STRING.HOME} element={<Home />}>
         <Route
           path={ROUTE_STRING.SUBSCRIPTION}
