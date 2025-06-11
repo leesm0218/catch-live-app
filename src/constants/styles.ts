@@ -142,3 +142,11 @@ export const SIGNUP_PAGE_STYLE = {
   paragraph: 'text-center text-base font-medium',
   bold: 'font-bold',
 };
+
+export const INPUT_WITH_BUTTON_STYLE = {
+  container: 'p-4 pb-2 flex gap-2',
+  input:
+    'w-full rounded-xl text-lg px-4 py-2 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500',
+  button:
+    'bg-purple-600 text-white font-bold rounded-md w-24 h-11 hover:bg-purple-700 transition"',
+};
