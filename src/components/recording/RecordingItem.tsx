@@ -1,3 +1,4 @@
+import { formatStatusLabel } from '@/utils/formatterUtils';
 import { RECORDING_ITEM_STYLE } from '../../constants/styles';
 import type {
   LiveStatus,
@@ -22,7 +23,8 @@ type RecordingItemProps = {
 };
 
 const RecordingItem = (props: RecordingItemProps) => {
-  const { title, channel, liveStatus, recordingStatus, startedAt } = props;
+  const { title, channel, liveStatus, videoUrl, recordingStatus, startedAt } =
+    props;
 
   const getLiveStatusStyle = (status: LiveStatus) => {
     switch (status) {
@@ -44,7 +46,7 @@ const RecordingItem = (props: RecordingItemProps) => {
       case 'RECORDING':
         return RECORDING_ITEM_STYLE.recordingStatus;
       case 'COMPLETED':
-        return RECORDING_ITEM_STYLE.compeletedStatus;
+        return RECORDING_ITEM_STYLE.completedStatus;
       case 'FAILED':
         return RECORDING_ITEM_STYLE.failedStatus;
     }
@@ -77,14 +79,14 @@ const RecordingItem = (props: RecordingItemProps) => {
             ` ${getRecordingStatusStyle(recordingStatus)}`
           }
         >
-          {recordingStatus}
+          {formatStatusLabel(recordingStatus)}
         </span>
       </div>
       <div className={RECORDING_ITEM_STYLE.footer}>
         <span className={RECORDING_ITEM_STYLE.channelText}>
           {channel.channelName}
         </span>
-        <FileDownloadButton />
+        <FileDownloadButton videoUrl={videoUrl} status={recordingStatus} />
       </div>
     </div>
   );
