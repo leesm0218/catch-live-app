@@ -1,9 +1,14 @@
 import { Filter } from 'lucide-react';
 import { FILTER_BUTTON_STYLE } from '../../constants/styles';
 
-const FilterButton = () => {
+type FilterButtonProps = {
+  onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
+};
+
+const FilterButton = (props: FilterButtonProps) => {
+  const { onClick } = props;
   return (
-    <button className={FILTER_BUTTON_STYLE.button}>
+    <button onClick={onClick} className={FILTER_BUTTON_STYLE.button}>
       <Filter size={16} />
       필터
     </button>
