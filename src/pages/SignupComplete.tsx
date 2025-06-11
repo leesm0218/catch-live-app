@@ -12,7 +12,7 @@ const SignupComplete = () => {
   return (
     <div className={SIGNUP_PAGE_STYLE.constainer}>
       <Header headerTitle="회원가입" />
-      <ProgressBar />
+      <ProgressBar progress="full" />
       <div className={SIGNUP_PAGE_STYLE.contentBox}>
         <div className={SIGNUP_PAGE_STYLE.checkIconCircle}>
           <CheckIcon className={SIGNUP_PAGE_STYLE.checkIcon} />
