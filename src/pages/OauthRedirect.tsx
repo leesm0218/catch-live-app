@@ -3,7 +3,7 @@ import type { ProviderType } from '@/types/login';
 import { useEffect } from 'react';
 import { useParams, useSearchParams } from 'react-router-dom';
 import useLoginMutation from '@/hooks/useLoginMutation';
-import { isAuthProvider } from '@/utils/login';
+import { isAuthProvider } from '@/utils/authUtils.ts';
 
 const OauthRedirect = () => {
   const { provider } = useParams<{ provider: ProviderType }>();
