@@ -104,7 +104,7 @@ export const SIGNUP_PAGE_STYLE = {
     'w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500',
   button:
     'w-full py-4 bg-purple-600 text-white font-bold rounded-md hover:bg-purple-700 transition disabled:opacity-50',
-  errorMessage: 'text-sm text-red-500 mt-2',
+  errorMessage: 'text-sm text-red-500 mt-2 h-[20px]',
   contentBox: 'flex flex-col items-center justify-center flex-1 py-12',
   checkIconCircle:
     'w-16 h-16 rounded-full bg-purple-500 flex items-center justify-center mb-6',
