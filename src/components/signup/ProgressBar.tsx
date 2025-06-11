@@ -2,9 +2,9 @@ import { SIGNUP_PAGE_STYLE } from '@/constants/styles';
 
 type ProgressType = 'half' | 'full';
 
-interface ProgressBarType {
+type ProgressBarType = {
   progress: ProgressType;
-}
+};
 
 const ProgressBar = ({ progress }: ProgressBarType) => {
   const progressBarStyle =

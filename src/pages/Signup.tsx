@@ -22,7 +22,7 @@ const Signup = () => {
 
   const { mutateSignup, isPending } = useSignupMutation(onErrorCallback);
 
-  const handleSignup = async () => {
+  const handleClick = async () => {
     const nickname = nicknameRef.current?.value;
 
     if (!nickname) {
@@ -56,7 +56,7 @@ const Signup = () => {
       <SignupButton
         text={isPending ? '가입중...' : '가입하기'}
         onClick={() => {
-          handleSignup();
+          handleClick();
         }}
       />
     </div>
