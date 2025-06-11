@@ -25,6 +25,11 @@ export interface channel {
 export type Platform = 'CHZZK' | 'YOUTUBE';
 export type RecordingStatus = 'RECORDING' | 'COMPLETED' | 'FAILED';
 export type LiveStatus = 'LIVE' | 'COMPLETED' | 'FAILED';
+export type SortOption = 'started_at:0' | 'started_at:1' | 'title:1';
+export type FilterApplyValue = {
+  platforms: Platform[];
+  recordingStatuses: RecordingStatus[];
+};
 
 // api 관련
 export type GetRecordingsParams = {

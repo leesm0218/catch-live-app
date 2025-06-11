@@ -50,6 +50,7 @@ export const RECORDING_ITEM_STYLE = {
   downloadButton:
     'w-12 h-12 rounded-full bg-white shadow-md flex items-center justify-center hover:scale-110 hover:shadow-xl transition-transform duration-200',
   downloadIcon: 'w-6 h-6 text-gray-700',
+  disable: 'opacity-50 cursor-not-allowed',
 
   liveStatus: 'bg-red-500',
   offlineStatus: 'bg-gray-500',
@@ -102,4 +103,54 @@ export const LOGIN_ERROR_FALLBACK_STYLE = {
   title: 'text-2xl font-bold mb-4',
   paragraph: 'text-red-500 mb-8',
   button: 'px-6 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600',
+};
+
+export const SORT_MODAL_STYLE = {
+  backdrop: 'fixed inset-0 z-50 flex items-end justify-center bg-black/50',
+  modal:
+    'w-full max-w-[720px] p-4 bg-white rounded-t-xl shadow-lg animate-slide-up min-h-[40vh] flex flex-col',
+  header: 'flex justify-between items-center mb-4',
+  title: 'text-lg font-semibold',
+  content: 'space-y-4 flex-grow py-4',
+  label: 'flex items-center justify-between w-full',
+  input: 'accent-purple-500 w-5 h-5',
+  divider: 'mt-6 pt-4 border-t-2 flex space-x-2',
+  cancelButton: 'flex-1 py-2 bg-gray-200 text-gray-600 rounded-md',
+  applyButton: 'flex-1 py-2 bg-purple-600 text-white rounded-md',
+};
+
+export const FILTER_MODAL_STYLE = {
+  backdrop: 'fixed inset-0 z-50 flex items-end justify-center bg-black/50',
+  modal:
+    'relative w-full max-w-[720px] bg-white rounded-t-xl shadow-lg p-4 animate-slide-up flex flex-col min-h-[50vh]',
+  header: 'flex justify-between items-center mb-4',
+  title: 'text-lg font-semibold',
+  content: 'space-y-16 py-2 flex-grow overflow-y-auto',
+  sectionTitle: 'font-semibold mb-2',
+  checkboxLabel: 'flex py-1 justify-between w-full',
+  checkbox: 'accent-purple-500 w-5 h-5',
+  footer: 'mt-6 pt-4 border-t-2 flex space-x-2',
+  resetButton: 'flex-1 py-2 bg-gray-200 text-gray-600 rounded-md',
+  applyButton: 'flex-1 py-2 bg-purple-600 text-white rounded-md',
+};
+
+export const SIGNUP_PAGE_STYLE = {
+  container: 'max-w-md mx-auto mt-24 p-6',
+  progressBarbox: 'w-full h-1 bg-gray-2,00 rounded-full mb-10',
+  progressBar: 'h-1 w-1/2 bg-purple-500 rounded-full',
+  progressBarComplete: 'h-1 bg-purple-500 rounded-full',
+  h2: 'text-lg font-bold mb-10 text-left',
+  form: 'mb-10',
+  label: 'block text-sm font-medium text-gray-700 mb-2',
+  input:
+    'w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500',
+  button:
+    'w-full py-4 bg-purple-600 text-white font-bold rounded-md hover:bg-purple-700 transition disabled:opacity-50',
+  errorMessage: 'text-sm text-red-500 mt-2 h-[20px]',
+  contentBox: 'flex flex-col items-center justify-center flex-1 py-12',
+  checkIconCircle:
+    'w-16 h-16 rounded-full bg-purple-500 flex items-center justify-center mb-6',
+  checkIcon: 'w-8 h-8 text-white',
+  paragraph: 'text-center text-base font-medium',
+  bold: 'font-bold',
 };

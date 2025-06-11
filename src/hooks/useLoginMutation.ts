@@ -12,7 +12,7 @@ const useLoginMutation = () => {
     onSuccess: ({ data: { needSignup, user, accessToken } }, requestDto) => {
       if (needSignup) {
         navigate(ROUTE_URL_FULL.SIGNUP, {
-          state: { requestDto, user },
+          state: { provider: requestDto.provider, email: user.email },
         });
         return;
       }
