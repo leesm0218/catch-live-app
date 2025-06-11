@@ -10,7 +10,9 @@ const fetchProfile = async () => {
   const url = profileApiUrl;
   const accessToken = localStorage.getItem('ACCESS_TOKEN');
   const res = await fetch(url, {
-    headers: { accessToken: accessToken || '' },
+    headers: {
+      Authorization: `Bearer ${accessToken || ''}`,
+    },
   });
 
   console.log('fetchProfile', url, res.status);
