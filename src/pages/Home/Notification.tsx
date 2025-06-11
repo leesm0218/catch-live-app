@@ -7,15 +7,19 @@ import { NotificationItem } from '@/components/ListItem';
 import type { NotificationItemProps } from '@/types/notification/notificationTypes';
 import { useEffect, useState } from 'react';
 
-const notificationURL = import.meta.env.VITE_API_BASE_URL + 'notifications';
+const notificationURL =
+  import.meta.env.VITE_API_BASE_URL + '/api/v1/notifications';
 
 const fetchNotifications = async (size: number, cursor?: number) => {
   let url = notificationURL + `?size=${size}&cursor=${cursor}`;
+  const accessToken = localStorage.getItem('ACCESS_TOKEN');
   if (cursor === undefined) {
     url = notificationURL + `?size=${size}`;
   }
   const res = await fetch(url, {
-    headers: {},
+    headers: {
+      Authorization: `Bearer ${accessToken || ''}`,
+    },
   });
   if (res.status === 401) {
     throw new Error('401');
