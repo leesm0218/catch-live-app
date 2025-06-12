@@ -12,7 +12,7 @@ const Home = () => {
   const getTitle = (path: string) => {
     switch (path) {
       case ROUTE_STRING.SUBSCRIPTION:
-        return '구독 목록';
+        return '구독';
       case ROUTE_STRING.RECORDING:
         return '녹화 목록';
       case ROUTE_STRING.NOTIFICATION:
