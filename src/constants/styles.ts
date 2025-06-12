@@ -150,3 +150,20 @@ export const INPUT_WITH_BUTTON_STYLE = {
   button:
     'bg-purple-600 text-white font-bold rounded-md w-24 h-11 hover:bg-purple-700 transition"',
 };
+
+export const SUBSCRIPTION_PAGE_STYLE = {
+  itemList: 'space-y-4 px-4 pb-20',
+};
+
+export const SUBSCRIPTION_ITEM_STYLE = {
+  container: 'flex flex-col gap-1 p-4 rounded-xl shadow-sm border bg-white',
+  box: 'flex items-start justify-between',
+  leftBox: 'flex flex-col',
+  rightBox: 'flex items-center gap-2',
+  channel: 'font-semibold',
+  platform: 'text-sm text-gray-600',
+  dateText: 'text-xs text-gray-400',
+  deleteButton:
+    'w-12 h-12 rounded-full bg-white shadow-md flex items-center justify-center hover:scale-110 hover:shadow-xl transition-transform duration-200',
+  deleteIcon: 'w-6 h-6 text-purple-600',
+};
