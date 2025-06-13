@@ -40,8 +40,18 @@ const Subscription = () => {
 
   return (
     <div>
+      <p className={SUBSCRIPTION_PAGE_STYLE.paragraph}>
+        <span className={SUBSCRIPTION_PAGE_STYLE.bold}>CHZZK </span>
+        또는 <span className={SUBSCRIPTION_PAGE_STYLE.bold}>YOUTUBE</span>{' '}
+        <span className={SUBSCRIPTION_PAGE_STYLE.boldWithColor}>채널 URL</span>{' '}
+        을 입력하면{' '}
+        <span className={SUBSCRIPTION_PAGE_STYLE.boldWithColor}>
+          방송 시작 시 자동으로 녹화
+        </span>
+        가 시작됩니다.
+      </p>
       <InputWithButton
-        placeholder="구독하고 싶은 채널 url을 입력하세요."
+        placeholder="구독하고 싶은 채널 URL을 입력하세요."
         inputText={channelUrl}
         buttonText="확인"
         onChange={setChannelUrl}

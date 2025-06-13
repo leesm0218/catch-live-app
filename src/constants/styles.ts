@@ -1,7 +1,7 @@
 //navigationBar styles
 export const NAVIGATION_STYLE = {
   background:
-    'fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[720px] h-16 bg-purple-500 flex justify-center shadow-xl z-10',
+    'fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[720px] h-16 bg-purple-500 flex justify-center shadow-xl z-10 rounded-t-xl',
   buttonList: 'flex w-full h-full items-center justify-around',
   button: 'flex-1 flex flex-col items-center justify-center',
   buttonImage: 'h-6 md:h-8 object-contain',
@@ -10,8 +10,8 @@ export const NAVIGATION_STYLE = {
 //Layout styles
 export const LAYOUT_STYLE = {
   screenLayout: 'h-screen flex flex-col',
-  mainContainer: 'flex-1 overflow-y-auto flex justify-center pb-4',
-  pageContent: 'w-full max-w-screen-md px-4',
+  mainContainer: 'flex-1 overflow-hidden flex justify-center pb-4',
+  pageContent: 'w-full max-w-screen-md px-4 mt-4',
 };
 
 //Recording styles
@@ -152,7 +152,13 @@ export const INPUT_WITH_BUTTON_STYLE = {
 };
 
 export const SUBSCRIPTION_PAGE_STYLE = {
-  itemList: 'space-y-4 px-4 pb-20',
+  itemList:
+    'space-y-4 px-4 pb-20 overflow-y-auto max-h-[calc(100vh-340px)] scrollbar-hide',
+  paragraph: 'text-center text-m text-gray-500 mt-4 mb-2',
+  bold: 'font-bold',
+  boldWithColor: 'text-purple-500 font-semibold',
+  chzzk: 'font-semibold text-green-500',
+  youtube: 'font-semibold text-red-500',
 };
 
 export const SUBSCRIPTION_ITEM_STYLE = {
