@@ -1,38 +1,31 @@
-import { getSubscriptions, postSubscription } from '@/api/subscription';
 import Header from '@/components/common/Header';
 import InputWithButton from '@/components/common/InputWithButton';
 import LoadingSpinner from '@/components/common/LoadingSpinner';
 import SubscriptionItem from '@/components/subscription/SubscriptionItem';
 import { SUBSCRIPTION_PAGE_STYLE } from '@/constants/styles';
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { useState } from 'react';
 import AlertModal from '@/components/common/AlertModal';
-import { API_STALE_TIME } from '@/constants/api';
+import { useSubscriptionsQuery } from '@/hooks/useSubscriptionsQuery';
+import useSubscribeMutation from '@/hooks/useSubscribeMutation';
 
 const Subscription = () => {
   const [channelUrl, setChannelUrl] = useState('');
   const [alertMessage, setAlertMessage] = useState('');
-  const queryClient = useQueryClient();
 
-  const { mutate: mutatePostSubscription } = useMutation({
-    mutationFn: postSubscription,
-    onSuccess: () => {
-      setAlertMessage('구독 채널이 추가되었습니다.');
-      queryClient.invalidateQueries({ queryKey: ['subscriptions'] });
-    },
-    onError: () => {
-      setAlertMessage('구독 채널 추가에 실패했습니다. URL을 확인해주세요.');
-    },
-  });
+  const { mutate: mutateSubscribe } = useSubscribeMutation(
+    () => setAlertMessage('구독 채널이 추가되었습니다.'),
+    (errorCode: string) => {
+      if (errorCode === '4402') {
+        setAlertMessage('이미 구독중인 채널입니다.');
+      } else if (errorCode === '4403') {
+        setAlertMessage('더 이상 채널을 구독할 수 없습니다.');
+      } else {
+        setAlertMessage('구독 채널 추가에 실패했습니다. URL을 확인해주세요.');
+      }
+    }
+  );
 
-  const { data, isLoading } = useQuery({
-    queryKey: ['subscriptions'],
-    queryFn: getSubscriptions,
-    staleTime: API_STALE_TIME,
-    refetchOnWindowFocus: true,
-    refetchOnMount: true,
-    select: (res) => res.data,
-  });
+  const { data, isLoading } = useSubscriptionsQuery();
 
   const handleSubmit = () => {
     if (channelUrl.trim() === '') {
@@ -40,7 +33,7 @@ const Subscription = () => {
       return;
     }
 
-    mutatePostSubscription(channelUrl);
+    mutateSubscribe(channelUrl);
   };
 
   const handleCloseModal = () => setAlertMessage('');
