@@ -167,3 +167,14 @@ export const SUBSCRIPTION_ITEM_STYLE = {
     'w-12 h-12 rounded-full bg-white shadow-md flex items-center justify-center hover:scale-110 hover:shadow-xl transition-transform duration-200',
   deleteIcon: 'w-6 h-6 text-purple-600',
 };
+
+export const MODAL_STYLE = {
+  backdrop: 'fixed inset-0 z-50 flex items-center justify-center bg-black/50',
+  container: 'bg-white rounded-xl p-6 w-80 text-center shadow-lg',
+  message: 'mb-4',
+  button:
+    'px-4 py-2 bg-purple-600 text-white rounded hover:bg-purple-700 transition',
+  buttonGroup: 'flex justify-center gap-4',
+  cancelButton:
+    'px-4 py-2 bg-gray-400 text-white rounded hover:bg-gray-500 transition',
+};
