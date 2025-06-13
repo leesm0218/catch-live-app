@@ -17,6 +17,12 @@ const InputWithButton = (props: InputWithButtonProps) => {
     onSubmit,
   } = props;
 
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter') {
+      onSubmit();
+    }
+  };
+
   return (
     <div className={INPUT_WITH_BUTTON_STYLE.container}>
       <input
@@ -24,10 +30,12 @@ const InputWithButton = (props: InputWithButtonProps) => {
         value={inputText}
         placeholder={placeholder}
         onChange={(e) => onChange(e.target.value)}
-        onKeyDown={onSubmit}
+        onKeyDown={handleKeyDown}
         className={INPUT_WITH_BUTTON_STYLE.input}
       />
-      <button className={INPUT_WITH_BUTTON_STYLE.button}>{buttonText}</button>
+      <button onClick={onSubmit} className={INPUT_WITH_BUTTON_STYLE.button}>
+        {buttonText}
+      </button>
     </div>
   );
 };
