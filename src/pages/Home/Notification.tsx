@@ -1,45 +1,61 @@
+import { useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { pageSize } from '@/constants/notification/notificationConstants';
 import { ROUTE_URL_FULL } from '@/constants/routers';
 import { NOTIFICATION_STYLE as style } from '@/constants/styles';
 import { NotificationItem } from '@/components/ListItem';
-import { useEffect, useState } from 'react';
 import { useNotificationInfiniteQuery } from '@/hooks/useNotificationInfiniteQuery';
+import { throttle } from 'lodash';
+import { useInfiniteScroll } from '@/hooks/useInfiniteScroll';
+import { pageSize } from '@/constants/notification/notificationConstants';
 import type { NotificationItemProps } from '@/types/notification/notificationTypes';
+import LoadingSpinner from '@/components/common/LoadingSpinner';
 
 const NotificationPage = () => {
   const size = pageSize;
   const navigate = useNavigate();
-  const [notifications, setNotifications] = useState<NotificationItemProps[]>(
-    []
-  );
-
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage, error } =
     useNotificationInfiniteQuery(size);
 
-  const platData = data?.pages.flatMap((page) => page.notifications) || [];
+  const throttledFetchNextPage = useRef(
+    throttle(
+      () => {
+        fetchNextPage();
+      },
+      1000,
+      { trailing: true }
+    )
+  );
+
+  const observerRef = useInfiniteScroll({
+    onIntersect: throttledFetchNextPage.current,
+    enabled: hasNextPage && !isFetchingNextPage,
+    threshold: 1,
+  });
 
   useEffect(() => {
-    if (notifications.length > 0) {
-      setNotifications((prev) => [...prev, ...notifications]);
-    }
-  }, [data]);
-
-  if (isFetchingNextPage) return <div>로딩 중</div>;
-
-  if (error || !data) {
-    if ((error as Error).message === '401') {
+    if (error?.message === '401') {
       navigate(ROUTE_URL_FULL.LOGIN);
     }
+  }, [error, navigate]);
+
+  if (error) {
     return <div>오류 발생</div>;
   }
 
+  const notifications = data?.pages.flatMap((page) => page.notifications) ?? [];
+
   return (
     <div className={style.item_list}>
-      {platData.map((props: NotificationItemProps) => (
+      {notifications.map((props: NotificationItemProps) => (
         <NotificationItem key={props.notificationId} {...props} />
       ))}
-      {hasNextPage && <div style={{ height: 1 }} />}
+      {isFetchingNextPage && <LoadingSpinner />}
+      {hasNextPage && (
+        <div
+          ref={observerRef}
+          style={{ height: 2, background: 'transparent' }}
+        />
+      )}
     </div>
   );
 };

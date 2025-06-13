@@ -11,15 +11,16 @@ export const NAVIGATION_STYLE = {
 //Layout styles
 export const LAYOUT_STYLE = {
   screenLayout: 'flex flex-col items-center h-screen',
-  mainContainer: 'flex-1 flex min-h-0',
-  pageContent: 'flex-1 flex flex-col min-h-0',
+  mainContainer: 'flex-1 flex w-full max-w-screen-md min-h-0',
+  pageContent: 'flex-1 flex flex-col w-full max-w-screen-md min-h-0',
 };
 
 //notification styles
 export const NOTIFICATION_STYLE = {
-  background: 'flex-1 flex flex-col min-h-0',
-  item_list: 'flex-1 flex flex-col overflow-y-auto overscroll-none',
-  item: 'flex-1 max-height-100px',
+  background: 'flex-1 flex flex-col w-full max-w-screen-md min-h-0',
+  item_list:
+    'flex-1 flex flex-col w-full max-w-screen-md hide-scrollbar overflow-y-auto overscroll-none items-center',
+  item: 'min-h-[100px]',
 };
 
 //Recording styles

@@ -5,7 +5,7 @@ export const NotificationItem = (props: NotificationItemProps) => {
   const { notificationId, content, createdAt } = props;
 
   return (
-    <div className={style.ITEM}>
+    <div className={style.item}>
       <div>{notificationId}</div>
       <div>{content}</div>
       <div>{createdAt}</div>
