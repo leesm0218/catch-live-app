@@ -6,36 +6,13 @@ import { NOTIFICATION_STYLE as style } from '@/constants/styles';
 import { NotificationItem } from '@/components/ListItem';
 import type { NotificationItemProps } from '@/types/notification/notificationTypes';
 import { useEffect, useState } from 'react';
-
-const notificationURL =
-  import.meta.env.VITE_API_BASE_URL + '/api/v1/notifications';
-
-const fetchNotifications = async (size: number, cursor?: number) => {
-  let url = notificationURL + `?size=${size}&cursor=${cursor}`;
-  const accessToken = localStorage.getItem('ACCESS_TOKEN');
-  if (cursor === undefined) {
-    url = notificationURL + `?size=${size}`;
-  }
-  const res = await fetch(url, {
-    headers: {
-      Authorization: `Bearer ${accessToken || ''}`,
-    },
-  });
-  if (res.status === 401) {
-    throw new Error('401');
-  }
-  if (!res.ok) {
-    throw new Error('알림 정보를 불러올 수 없습니다.');
-  }
-  const json = await res.json();
-  return json.data;
-};
+import { fetchNotifications } from '@/api/notification';
 
 const NotificationPage = () => {
   const size = pageSize;
   const navigate = useNavigate();
   const [haveNext, setHaveNext] = useState<boolean>(true);
-  const [cursor, setCursor] = useState(undefined);
+  const [cursor, setCursor] = useState<number | undefined>(undefined);
   const [notifications, setNotifications] = useState<NotificationItemProps[]>(
     []
   );
@@ -49,7 +26,8 @@ const NotificationPage = () => {
   });
 
   useEffect(() => {
-    if (data?.notifications.length > 0) {
+    if (!data) return;
+    if (data.notifications.length > 0) {
       setNotifications((prev) => [...prev, ...data.notifications]);
       if (cursor !== data.nextCursor) {
         setCursor(data.nextCursor);
