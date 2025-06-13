@@ -1,14 +1,14 @@
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { throttle } from 'lodash';
+import { NotificationItem } from '@/components/ListItem';
+import LoadingSpinner from '@/components/common/LoadingSpinner';
+import { useNotificationInfiniteQuery } from '@/hooks/useNotificationInfiniteQuery';
+import { useInfiniteScroll } from '@/hooks/useInfiniteScroll';
 import { ROUTE_URL_FULL } from '@/constants/routers';
 import { NOTIFICATION_STYLE as style } from '@/constants/styles';
-import { NotificationItem } from '@/components/ListItem';
-import { useNotificationInfiniteQuery } from '@/hooks/useNotificationInfiniteQuery';
-import { throttle } from 'lodash';
-import { useInfiniteScroll } from '@/hooks/useInfiniteScroll';
 import { pageSize } from '@/constants/notification/notificationConstants';
 import type { NotificationItemProps } from '@/types/notification/notificationTypes';
-import LoadingSpinner from '@/components/common/LoadingSpinner';
 
 const NotificationPage = () => {
   const size = pageSize;
@@ -16,14 +16,16 @@ const NotificationPage = () => {
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage, error } =
     useNotificationInfiniteQuery(size);
 
-  const throttledFetchNextPage = useRef(
+  const throttledFetchNextPage = useRef<() => void>(null);
+  throttledFetchNextPage.current = useCallback(
     throttle(
       () => {
         fetchNextPage();
       },
       1000,
       { trailing: true }
-    )
+    ),
+    [fetchNextPage]
   );
 
   const observerRef = useInfiniteScroll({
