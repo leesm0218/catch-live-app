@@ -9,3 +9,7 @@ export interface SubscriptionData {
     platform: Platform;
   };
 }
+
+export interface SubscriptionResponse {
+  subscriptions: SubscriptionData[];
+}
