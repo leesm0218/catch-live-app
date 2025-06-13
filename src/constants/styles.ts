@@ -171,7 +171,7 @@ export const SUBSCRIPTION_ITEM_STYLE = {
   dateText: 'text-xs text-gray-400',
   deleteButton:
     'w-12 h-12 rounded-full bg-white shadow-md flex items-center justify-center hover:scale-110 hover:shadow-xl transition-transform duration-200',
-  deleteIcon: 'w-6 h-6 text-purple-600',
+  deleteIcon: 'w-6 h-6 text-red-600 stroke-[2.5]',
 };
 
 export const MODAL_STYLE = {
