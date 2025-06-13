@@ -1,11 +1,10 @@
-import { deleteSubscription } from '@/api/subscription';
 import { SUBSCRIPTION_ITEM_STYLE } from '@/constants/styles';
 import type { Platform } from '@/types/recording';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { MinusIcon } from 'lucide-react';
 import { useState } from 'react';
 import ConfirmModal from '../common/ConfirmModal';
 import AlertModal from '../common/AlertModal';
+import useUnsubscribeMutation from '@/hooks/useUnsubscribeMutation';
 
 type SubscriptionItemProps = {
   subscriptionId: number;
@@ -21,20 +20,13 @@ const SubscriptionItem = (props: SubscriptionItemProps) => {
   const { subscriptionId, subscribedAt, channel } = props;
   const [alertMessage, setAlertMessage] = useState('');
   const [showConfirmModal, setShowConfirmModal] = useState(false);
-  const queryClient = useQueryClient();
 
-  const confirmMessage = `[${channel.channelName}] 채널 구독을 취소하시겠습니까?`;
+  const confirmMessage = `[${channel.channelName}] 채널 구독을 해지하시겠습니까?`;
 
-  const { mutate: mutateUnsubscribe } = useMutation({
-    mutationFn: deleteSubscription,
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['subscriptions'] });
-      setAlertMessage('채널 구독이 취소되었습니다.');
-    },
-    onError: () => {
-      setAlertMessage('구독채널 삭제 도중 문제가 발생했습니다.');
-    },
-  });
+  const { mutate: mutateUnsubscribe } = useUnsubscribeMutation(
+    () => setAlertMessage('채널 구독이 해지되었습니다.'),
+    () => setAlertMessage('구독채널 해지 도중 문제가 발생했습니다.')
+  );
 
   const handleClickButton = () => {
     setShowConfirmModal(true);
