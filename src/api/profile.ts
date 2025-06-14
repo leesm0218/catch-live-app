@@ -1,16 +1,16 @@
 import axios from 'axios';
+import type { Profile } from '@/types/profile';
+import { GET_PROFILE_API_URL, ACCESS_TOKEN_KEY } from '@/constants/api';
 
-const profileApiUrl = import.meta.env.VITE_API_BASE_URL + '/api/v1/users/me';
-
-export const fetchProfile = async () => {
-  const accessToken = localStorage.getItem('ACCESS_TOKEN');
+export const fetchProfile = async (): Promise<Profile> => {
+  const accessToken = localStorage.getItem(ACCESS_TOKEN_KEY);
   try {
-    const res = await axios.get(profileApiUrl, {
+    const res = await axios.get(GET_PROFILE_API_URL, {
       headers: {
         Authorization: `Bearer ${accessToken || ''}`,
       },
     });
-    return res.data.data;
+    return res.data.data as Profile;
   } catch (error) {
     if (axios.isAxiosError(error) && error.response?.status === 401) {
       throw new Error('401');

@@ -20,6 +20,9 @@ const ProfilePage = () => {
       return <div>오류 발생</div>;
     }
   }
+  if (!data) {
+    return <div>오류 발생</div>;
+  }
 
   return (
     <div className={style.background}>
