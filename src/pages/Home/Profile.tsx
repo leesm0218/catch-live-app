@@ -1,46 +1,16 @@
 import { LogOutButton, DeleteAccountButton } from '@/components/Button';
 import { PROFILE_STYLE as style } from '@/constants/styles';
-import { useQuery } from '@tanstack/react-query';
 import { useNavigate } from 'react-router-dom';
 import { ROUTE_URL_FULL } from '@/constants/routers';
-
-const profileApiUrl = import.meta.env.VITE_API_BASE_URL + '/api/v1/users/me';
-
-const fetchProfile = async () => {
-  const url = profileApiUrl;
-  const accessToken = localStorage.getItem('ACCESS_TOKEN');
-  const res = await fetch(url, {
-    headers: {
-      Authorization: `Bearer ${accessToken || ''}`,
-    },
-  });
-
-  console.log('fetchProfile', url, res.status);
-  if (res.status === 401) {
-    throw new Error('401');
-  }
-  if (!res.ok) {
-    throw new Error('유저 정보를 불러올 수 없습니다.');
-  }
-  const json = await res.json();
-  return json.data;
-};
+import { useProfileQuery } from '@/hooks/useProfileQuery';
+import LoadingSpinner from '@/components/common/LoadingSpinner';
 
 const ProfilePage = () => {
   const navigate = useNavigate();
-  const { data, isLoading, error } = useQuery({
-    queryKey: ['profile'],
-    queryFn: () => fetchProfile(),
-    retry: (failureCount, error) => {
-      if (error instanceof Error && error.message === '401') {
-        return false;
-      }
-      return false;
-    },
-  });
+  const { data, isLoading, error } = useProfileQuery();
 
   if (isLoading) {
-    return <div>로딩 중</div>;
+    return <LoadingSpinner />;
   }
 
   if (error) {
@@ -49,10 +19,6 @@ const ProfilePage = () => {
     } else {
       return <div>오류 발생</div>;
     }
-  }
-
-  if (!data) {
-    return <div>오류 발생</div>;
   }
 
   return (
