@@ -8,7 +8,7 @@ import { useInfiniteScroll } from '@/hooks/useInfiniteScroll';
 import { ROUTE_URL_FULL } from '@/constants/routers';
 import { NOTIFICATION_STYLE as style } from '@/constants/styles';
 import { pageSize } from '@/constants/notification/notificationConstants';
-import type { NotificationItemProps } from '@/types/notification/notificationTypes';
+import type { NotificationItemProps } from '@/types/notificationTypes';
 
 const NotificationPage = () => {
   const size = pageSize;

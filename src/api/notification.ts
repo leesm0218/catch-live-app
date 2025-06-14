@@ -1,12 +1,10 @@
 import axios from 'axios';
-import type { NotificationItemProps } from '@/types/notification/notificationTypes';
-
-const notificationURL =
-  import.meta.env.VITE_API_BASE_URL + '/api/v1/notifications';
+import type { NotificationItemProps } from '@/types/notificationTypes';
+import { GET_NOTIFICATIONS_URL, ACCESS_TOKEN_KEY } from '@/constants/api';
 
 export const fetchNotifications = async (size: number, cursor?: number) => {
-  const accessToken = localStorage.getItem('ACCESS_TOKEN');
-  let url = notificationURL + `?size=${size}`;
+  const accessToken = localStorage.getItem(ACCESS_TOKEN_KEY);
+  let url = GET_NOTIFICATIONS_URL + `?size=${size}`;
   if (cursor !== undefined) {
     url += `&cursor=${cursor}`;
   }
