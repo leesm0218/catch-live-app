@@ -2,10 +2,13 @@ import axios from 'axios';
 import type { NotificationItemProps } from '@/types/notificationTypes';
 import { GET_NOTIFICATIONS_URL, ACCESS_TOKEN_KEY } from '@/constants/api';
 
-export const fetchNotifications = async (size: number, cursor?: number) => {
+export const fetchNotifications = async (
+  size: number,
+  cursor: number | null
+) => {
   const accessToken = localStorage.getItem(ACCESS_TOKEN_KEY);
   let url = GET_NOTIFICATIONS_URL + `?size=${size}`;
-  if (cursor !== undefined) {
+  if (cursor !== undefined && cursor !== null) {
     url += `&cursor=${cursor}`;
   }
 

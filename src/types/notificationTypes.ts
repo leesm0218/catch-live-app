@@ -3,3 +3,8 @@ export type NotificationItemProps = {
   content: string;
   createdAt: string;
 };
+
+export type NotificatinFetchResult = {
+  notifications: NotificationItemProps[];
+  nextCursor: number | null;
+};

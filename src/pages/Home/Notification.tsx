@@ -1,4 +1,4 @@
-import { useRef, useEffect, useCallback } from 'react';
+import { useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { throttle } from 'lodash';
 import { NotificationItem } from '@/components/ListItem';
@@ -16,17 +16,17 @@ const NotificationPage = () => {
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage, error } =
     useNotificationInfiniteQuery(size);
 
-  const throttledFetchNextPage = useRef<() => void>(null);
-  throttledFetchNextPage.current = useCallback(
-    throttle(
+  const throttledFetchNextPage = useRef<() => void>(() => {});
+
+  useEffect(() => {
+    throttledFetchNextPage.current = throttle(
       () => {
         fetchNextPage();
       },
       1000,
       { trailing: true }
-    ),
-    [fetchNextPage]
-  );
+    );
+  }, [fetchNextPage]);
 
   const observerRef = useInfiniteScroll({
     onIntersect: throttledFetchNextPage.current,
