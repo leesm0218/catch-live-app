@@ -4,23 +4,23 @@ import { useNavigate } from 'react-router-dom';
 import { ROUTE_URL_FULL } from '@/constants/routers';
 import { useProfileQuery } from '@/hooks/useProfileQuery';
 import LoadingSpinner from '@/components/common/LoadingSpinner';
+import { useEffect } from 'react';
 
 const ProfilePage = () => {
   const navigate = useNavigate();
   const { data, isLoading, error } = useProfileQuery();
 
+  useEffect(() => {
+    if (error?.message === '401') {
+      navigate(ROUTE_URL_FULL.LOGIN);
+    }
+  }, [error, navigate]);
+
   if (isLoading) {
     return <LoadingSpinner />;
   }
 
-  if (error) {
-    if (error.message === '401') {
-      navigate(ROUTE_URL_FULL.LOGIN);
-    } else {
-      return <div>오류 발생</div>;
-    }
-  }
-  if (!data) {
+  if (error || !data) {
     return <div>오류 발생</div>;
   }
 
