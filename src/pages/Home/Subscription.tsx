@@ -12,9 +12,12 @@ const Subscription = () => {
   const [channelUrl, setChannelUrl] = useState('');
   const [alertMessage, setAlertMessage] = useState('');
 
-  const { mutate: mutateSubscribe } = useSubscribeMutation(
-    () => setAlertMessage('구독 채널이 추가되었습니다.'),
-    (errorCode: string) => {
+  const { mutate: mutateSubscribe } = useSubscribeMutation({
+    onSuccess: () => {
+      setAlertMessage('구독 채널이 추가되었습니다.');
+      setChannelUrl('');
+    },
+    onError: (errorCode: string) => {
       if (errorCode === '4402') {
         setAlertMessage('이미 구독중인 채널입니다.');
       } else if (errorCode === '4403') {
@@ -22,8 +25,8 @@ const Subscription = () => {
       } else {
         setAlertMessage('구독 채널 추가에 실패했습니다. URL을 확인해주세요.');
       }
-    }
-  );
+    },
+  });
 
   const { data, isLoading, isError } = useSubscriptionsQuery();
 
@@ -40,7 +43,9 @@ const Subscription = () => {
     mutateSubscribe(channelUrl);
   };
 
-  const handleCloseModal = () => setAlertMessage('');
+  const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setChannelUrl(e.target.value);
+  };
 
   return (
     <div>
@@ -58,7 +63,7 @@ const Subscription = () => {
         placeholder="구독하고 싶은 채널 URL을 입력하세요."
         inputText={channelUrl}
         buttonText="확인"
-        onChange={setChannelUrl}
+        onChange={handleOnChange}
         onSubmit={handleSubmit}
       />
       <Header headerTitle="구독 목록" />
@@ -75,7 +80,10 @@ const Subscription = () => {
         )}
       </div>
       {alertMessage && (
-        <AlertModal message={alertMessage} onClose={handleCloseModal} />
+        <AlertModal
+          message={alertMessage}
+          onClose={() => setAlertMessage('')}
+        />
       )}
     </div>
   );

@@ -2,10 +2,13 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { postSubscription } from '@/api/subscription';
 import { isAxiosError } from 'axios';
 
-const useSubscribeMutation = (
-  onSuccess: () => void,
-  onError: (errorCode: string) => void
-) => {
+const useSubscribeMutation = ({
+  onSuccess,
+  onError,
+}: {
+  onSuccess: () => void;
+  onError: (errorCode: string) => void;
+}) => {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: postSubscription,

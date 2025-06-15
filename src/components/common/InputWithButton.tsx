@@ -4,7 +4,7 @@ type InputWithButtonProps = {
   placeholder?: string;
   inputText?: string;
   buttonText?: string;
-  onChange: (inputText: string) => void;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onSubmit: () => void;
 };
 
@@ -29,7 +29,7 @@ const InputWithButton = (props: InputWithButtonProps) => {
         type="text"
         value={inputText}
         placeholder={placeholder}
-        onChange={(e) => onChange(e.target.value)}
+        onChange={onChange}
         onKeyDown={handleKeyDown}
         className={INPUT_WITH_BUTTON_STYLE.input}
       />

@@ -23,14 +23,10 @@ const SubscriptionItem = (props: SubscriptionItemProps) => {
 
   const confirmMessage = `[${channel.channelName}] 채널 구독을 해지하시겠습니까?`;
 
-  const { mutate: mutateUnsubscribe } = useUnsubscribeMutation(
-    () => setAlertMessage('채널 구독이 해지되었습니다.'),
-    () => setAlertMessage('구독채널 해지 도중 문제가 발생했습니다.')
-  );
-
-  const handleClickButton = () => {
-    setShowConfirmModal(true);
-  };
+  const { mutate: mutateUnsubscribe } = useUnsubscribeMutation({
+    onSuccess: () => setAlertMessage('채널 구독이 해지되었습니다.'),
+    onError: () => setAlertMessage('구독채널 해지 도중 문제가 발생했습니다.'),
+  });
 
   const handleConfirm = () => {
     setShowConfirmModal(false);
@@ -54,7 +50,7 @@ const SubscriptionItem = (props: SubscriptionItemProps) => {
               {subscribedAt}
             </span>
             <button
-              onClick={() => handleClickButton()}
+              onClick={() => setShowConfirmModal(true)}
               className={SUBSCRIPTION_ITEM_STYLE.deleteButton}
             >
               <MinusIcon className={SUBSCRIPTION_ITEM_STYLE.deleteIcon} />
