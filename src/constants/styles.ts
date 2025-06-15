@@ -148,7 +148,7 @@ export const INPUT_WITH_BUTTON_STYLE = {
   input:
     'w-full rounded-xl text-lg px-4 py-2 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500',
   button:
-    'bg-purple-600 text-white font-bold rounded-md w-24 h-11 hover:bg-purple-700 transition"',
+    'bg-purple-600 text-white font-bold rounded-md w-24 h-11 hover:bg-purple-700 transition',
 };
 
 export const SUBSCRIPTION_PAGE_STYLE = {
