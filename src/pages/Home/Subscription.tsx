@@ -25,7 +25,11 @@ const Subscription = () => {
     }
   );
 
-  const { data, isLoading } = useSubscriptionsQuery();
+  const { data, isLoading, isError } = useSubscriptionsQuery();
+
+  if (isError) {
+    return <div>구독 채널을 불러오는 데 실패했습니다.</div>;
+  }
 
   const handleSubmit = () => {
     if (channelUrl.trim() === '') {
