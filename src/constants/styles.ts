@@ -10,8 +10,8 @@ export const NAVIGATION_STYLE = {
 //Layout styles
 export const LAYOUT_STYLE = {
   screenLayout: 'h-screen flex flex-col',
-  mainContainer: 'flex-1 overflow-hidden flex justify-center pb-4',
-  pageContent: 'w-full max-w-screen-md px-4 mt-4',
+  mainContainer: 'flex-1 flex justify-center min-h-0 pb-4',
+  pageContent: 'flex-1 flex flex-col w-full max-w-screen-md min-h-0 px-4 mt-4',
 };
 
 //Recording styles
@@ -152,8 +152,7 @@ export const INPUT_WITH_BUTTON_STYLE = {
 };
 
 export const SUBSCRIPTION_PAGE_STYLE = {
-  itemList:
-    'space-y-4 px-4 pb-20 overflow-y-auto max-h-[calc(100vh-340px)] scrollbar-hide',
+  itemList: 'space-y-4 px-4 pb-20 overflow-y-auto scrollbar-hide',
   paragraph: 'text-center text-m text-gray-500 mt-4 mb-2',
   bold: 'font-bold',
   boldWithColor: 'text-purple-500 font-semibold',
