@@ -6,9 +6,11 @@ import type {
   RecordingStatus,
 } from '../../types/recording';
 import FileDownloadButton from './FileDownloadButton';
+import { toKstDate } from '@/utils/dateUtils';
 
 type RecordingItemProps = {
   liveSessionId: number;
+  recordingId: number;
   title: string;
   videoUrl: string;
   startedAt: string | null;
@@ -69,7 +71,9 @@ const RecordingItem = (props: RecordingItemProps) => {
             {channel.platform}
           </span>
         </div>
-        <span className={RECORDING_ITEM_STYLE.dateText}>{startedAt}</span>
+        <span className={RECORDING_ITEM_STYLE.dateText}>
+          {toKstDate(startedAt)}
+        </span>
       </div>
       <div className={RECORDING_ITEM_STYLE.titleRow}>
         <div className={RECORDING_ITEM_STYLE.titleText}>{title}</div>

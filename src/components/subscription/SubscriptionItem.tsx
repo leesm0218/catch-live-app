@@ -5,6 +5,7 @@ import { useState } from 'react';
 import ConfirmModal from '../common/ConfirmModal';
 import AlertModal from '../common/AlertModal';
 import useUnsubscribeMutation from '@/hooks/useUnsubscribeMutation';
+import { toKstDate } from '@/utils/dateUtils';
 
 type SubscriptionItemProps = {
   subscriptionId: number;
@@ -47,7 +48,7 @@ const SubscriptionItem = (props: SubscriptionItemProps) => {
           </div>
           <div className={SUBSCRIPTION_ITEM_STYLE.rightBox}>
             <span className={SUBSCRIPTION_ITEM_STYLE.dateText}>
-              {subscribedAt}
+              {toKstDate(subscribedAt)}
             </span>
             <button
               onClick={() => setShowConfirmModal(true)}
