@@ -12,7 +12,7 @@ const RecordingContent = ({
   return (
     <>
       {data?.recordings?.map((recording) => (
-        <RecordingItem key={recording.liveSessionId} {...recording} />
+        <RecordingItem key={recording.recordingId} {...recording} />
       ))}
     </>
   );
