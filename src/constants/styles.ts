@@ -10,8 +10,8 @@ export const NAVIGATION_STYLE = {
 //Layout styles
 export const LAYOUT_STYLE = {
   screenLayout: 'h-screen flex flex-col',
-  mainContainer: 'flex-1 overflow-y-auto flex justify-center pb-4',
-  pageContent: 'w-full max-w-screen-md px-4',
+  mainContainer: 'flex-1 flex justify-center min-h-0 pb-4',
+  pageContent: 'flex-1 flex flex-col w-full max-w-screen-md min-h-0 px-4 mt-4',
 };
 
 //Recording styles
