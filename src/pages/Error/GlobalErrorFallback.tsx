@@ -1,3 +1,4 @@
+import { ERROR_FALLBACK_STYLE } from '@/constants/styles';
 import type { AxiosError } from 'axios';
 
 const GlobalErrorFallback = ({ error }: { error?: AxiosError }) => {
@@ -21,17 +22,14 @@ const GlobalErrorFallback = ({ error }: { error?: AxiosError }) => {
   };
 
   return (
-    <div className="w-screen h-screen flex items-center justify-center">
-      <div className="flex flex-col items-center justify-center bg-red-50 min-w-[60vh] min-h-[60vh] p-8 text-center text-red-800 rounded-lg shadow-md">
-        <div className="text-5xl font-bold mb-4">{status}</div>
-        <div className="text-xl font-semibold mb-2">{getMessage()}</div>
-        <div className="text-sm text-gray-600 mb-6">
+    <div className={ERROR_FALLBACK_STYLE.container}>
+      <div className={ERROR_FALLBACK_STYLE.box}>
+        <div className={ERROR_FALLBACK_STYLE.statusText}>{status}</div>
+        <div className={ERROR_FALLBACK_STYLE.messageText}>{getMessage()}</div>
+        <div className={ERROR_FALLBACK_STYLE.subText}>
           문제가 계속되면 관리자에게 문의해 주세요.
         </div>
-        <a
-          href="/"
-          className="mt-2 px-4 py-2 rounded-md bg-red-600 text-white font-medium hover:bg-red-700 transition"
-        >
+        <a href="/" className={ERROR_FALLBACK_STYLE.homeButton}>
           메인으로 돌아가기
         </a>
       </div>
