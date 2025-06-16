@@ -1,4 +1,5 @@
-import { LogOutButton, DeleteAccountButton } from '@/components/Button';
+import { SignoutButton } from '@/components/Signout/SignoutButton';
+import { LogOutButton } from '@/components/Logout/LogoutButton';
 import { PROFILE_STYLE as style } from '@/constants/styles';
 import { useNavigate } from 'react-router-dom';
 import { ROUTE_URL_FULL } from '@/constants/routers';
@@ -42,7 +43,7 @@ const ProfilePage = () => {
       </div>
       <div className={style.button_box}>
         <LogOutButton />
-        <DeleteAccountButton />
+        <SignoutButton />
       </div>
     </div>
   );
