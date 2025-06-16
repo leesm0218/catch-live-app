@@ -2,6 +2,7 @@ import { postLogin } from '@/api/login';
 import { ACCESS_TOKEN_KEY } from '@/constants/api';
 import { ROUTE_URL_FULL } from '@/constants/routers';
 import { useMutation } from '@tanstack/react-query';
+import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 const useLoginMutation = () => {
@@ -18,6 +19,7 @@ const useLoginMutation = () => {
       }
 
       localStorage.setItem(ACCESS_TOKEN_KEY, accessToken);
+      axios.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
       navigate(ROUTE_URL_FULL.SUBSCRIPTION);
     },
     onError(error) {
