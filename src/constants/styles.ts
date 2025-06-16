@@ -152,8 +152,7 @@ export const INPUT_WITH_BUTTON_STYLE = {
 };
 
 export const SUBSCRIPTION_PAGE_STYLE = {
-  itemList:
-    'space-y-4 px-4 pb-20 overflow-y-auto max-h-[calc(100vh-340px)] scrollbar-hide',
+  itemList: 'space-y-4 px-4 pb-20 overflow-y-auto scrollbar-hide',
   paragraph: 'text-center text-m text-gray-500 mt-4 mb-2',
   bold: 'font-bold',
   boldWithColor: 'text-purple-500 font-semibold',
