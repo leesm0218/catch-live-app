@@ -14,7 +14,7 @@ const NotificationPage = () => {
   const size = pageSize;
   const navigate = useNavigate();
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage, error } =
-    useNotificationInfiniteQuery(size);
+    useNotificationInfiniteQuery({ size: size });
 
   const throttledFetchNextPage = useRef<() => void>(() => {});
 

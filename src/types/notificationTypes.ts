@@ -8,3 +8,7 @@ export type NotificatinFetchResult = {
   notifications: NotificationItemProps[];
   nextCursor: number | null;
 };
+
+export type NotificationFetchParam = {
+  size: number;
+};

@@ -1,16 +1,20 @@
 import { useInfiniteQuery } from '@tanstack/react-query';
 import { fetchNotifications } from '@/api/notification';
 import type { NotificatinFetchResult } from '@/types/notificationTypes';
+import type { NotificationFetchParam } from '@/types/notificationTypes';
 
-export function useBaseInfiniteQuery<T extends { nextCursor: number | null }>(
+export function useBaseInfiniteQuery<
+  T extends { nextCursor: number | null },
+  P extends { size: number },
+>(
   key: string,
-  size: number,
-  fetchFunction: (size: number, cursor: number | null) => Promise<T>
+  params: P,
+  fetchFunction: (params: P, cursor: number | null) => Promise<T>
 ) {
   return useInfiniteQuery({
-    queryKey: [key, size],
+    queryKey: [key],
     queryFn: async ({ pageParam }: { pageParam: number | null }) => {
-      return fetchFunction(size, pageParam);
+      return fetchFunction(params, pageParam);
     },
     getNextPageParam: (lastPage) => {
       return Number(lastPage.nextCursor) > 1 ? lastPage.nextCursor : null;
@@ -34,10 +38,10 @@ export function useBaseInfiniteQuery<T extends { nextCursor: number | null }>(
 // useInfiniteQuery의 내부 동작에 null 값을 요구하기 때문에 포함되었습니다.
 // 서버에서는 가능한 { nextCursor: number }의 형태로 응답하는것을 권장합니다.
 
-export function useNotificationInfiniteQuery(size: number) {
-  return useBaseInfiniteQuery<NotificatinFetchResult>(
+export function useNotificationInfiniteQuery(param: NotificationFetchParam) {
+  return useBaseInfiniteQuery<NotificatinFetchResult, NotificationFetchParam>(
     'notifications',
-    size,
+    param,
     fetchNotifications
   );
 }
