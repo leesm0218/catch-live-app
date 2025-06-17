@@ -5,8 +5,10 @@ import Login from './pages/Login';
 import Home from './pages/Home';
 import LoginErrorBoundary from './pages/Error/LoginErrorBoundary';
 import Recording from './pages/Home/Recording';
+import NotificationPage from '@/pages/Home/Notification';
 import Signup from './pages/Signup';
 import SignupComplete from './pages/SignupComplete';
+import Subscription from './pages/Home/Subscription';
 
 import ProfilePage from '@/pages/Home/Profile';
 
@@ -26,14 +28,11 @@ const App = () => {
       <Route path={ROUTE_STRING.SIGNUP} element={<Signup />} />
       <Route path={ROUTE_STRING.SIGNUP_COMPLETE} element={<SignupComplete />} />
       <Route path={ROUTE_STRING.HOME} element={<Home />}>
-        <Route
-          path={ROUTE_STRING.SUBSCRIPTION}
-          element={<div>구독 페이지 입니다</div>}
-        />
+        <Route path={ROUTE_STRING.SUBSCRIPTION} element={<Subscription />} />
         <Route path={ROUTE_STRING.RECORDING} element={<Recording />} />
         <Route
           path={ROUTE_STRING.NOTIFICATION}
-          element={<div>알림 페이지 입니다</div>}
+          element={<NotificationPage />}
         />
         <Route path={ROUTE_STRING.PROFILE} element={<ProfilePage />} />
       </Route>

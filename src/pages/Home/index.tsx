@@ -1,8 +1,8 @@
-import { Outlet, useLocation } from 'react-router-dom';
-import { LAYOUT_STYLE } from '../../constants/styles';
-import { ROUTE_STRING } from '../../constants/routers';
 import Header from '@/components/common/Header';
 import NavigationBar from '@/components/common/NavigationBar';
+import { useLocation, Outlet } from 'react-router-dom';
+import { ROUTE_STRING } from '@/constants/routers';
+import { LAYOUT_STYLE } from '@/constants/styles';
 
 const Home = () => {
   const { pathname } = useLocation();
@@ -12,7 +12,7 @@ const Home = () => {
   const getTitle = (path: string) => {
     switch (path) {
       case ROUTE_STRING.SUBSCRIPTION:
-        return '구독 목록';
+        return '구독';
       case ROUTE_STRING.RECORDING:
         return '녹화 목록';
       case ROUTE_STRING.NOTIFICATION:
