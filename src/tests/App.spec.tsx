@@ -30,7 +30,6 @@ describe('App', () => {
         </MemoryRouter>
       </QueryClientProvider>
     );
-    expect(screen.getByText('구독 페이지 입니다')).toBeInTheDocument();
 
     await user.click(screen.getByText('녹화목록'));
     expect(screen.getByText('녹화목록')).toBeInTheDocument();
@@ -55,7 +54,6 @@ describe('App', () => {
     expect(screen.getByText('녹화목록')).toBeInTheDocument();
 
     await user.click(screen.getByText('구독'));
-    expect(screen.getByText('구독 페이지 입니다')).toBeInTheDocument();
 
     await user.click(screen.getByText('알림'));
     expect(screen.getByText('알림 페이지 입니다')).toBeInTheDocument();
@@ -77,7 +75,6 @@ describe('App', () => {
     expect(screen.getByText('알림 페이지 입니다')).toBeInTheDocument();
 
     await user.click(screen.getByText('구독'));
-    expect(screen.getByText('구독 페이지 입니다')).toBeInTheDocument();
 
     await user.click(screen.getByText('녹화목록'));
     expect(screen.getByText('녹화목록')).toBeInTheDocument();
@@ -99,7 +96,6 @@ describe('App', () => {
     expect(screen.getAllByText('마이 페이지 입니다')[0]).toBeInTheDocument();
 
     await user.click(screen.getByText('구독'));
-    expect(screen.getByText('구독 페이지 입니다')).toBeInTheDocument();
 
     await user.click(screen.getByText('녹화목록'));
     expect(screen.getByText('녹화목록')).toBeInTheDocument();

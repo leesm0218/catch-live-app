@@ -6,6 +6,7 @@ export interface RecordingResponse {
 
 export interface RecordingData {
   liveSessionId: number;
+  recordingId: number;
   title: string;
   videoUrl: string;
   startedAt: string | null;
