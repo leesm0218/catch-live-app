@@ -88,7 +88,7 @@ const Recording = () => {
   };
 
   return (
-    <div>
+    <>
       <div className={RECORDING_STYLE.headerContainer}>
         <SearchBar
           text={searchText}
@@ -121,7 +121,7 @@ const Recording = () => {
           onApply={(e) => handleApply(e, 'sort')}
         />
       )}
-    </div>
+    </>
   );
 };
 
