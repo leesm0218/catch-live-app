@@ -3,9 +3,21 @@ import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom';
 import { MemoryRouter } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, vi } from 'vitest';
 import { ROUTE_URL_FULL } from '../constants/routers';
 import App from '../App';
+
+vi.mock('@/hooks/useProfileQuery', () => ({
+  useProfileQuery: () => ({
+    data: {
+      provider: 'KAKAO',
+      email: 'test@example.com',
+      createdAt: '2024-06-17',
+    },
+    isLoading: false,
+    error: null,
+  }),
+}));
 
 describe('App', () => {
   const queryClient = new QueryClient();
@@ -86,7 +98,6 @@ describe('App', () => {
   });
 
   it('마이 페이지가 정상적으로 출력되는지 확인', async () => {
-    const user = userEvent.setup();
     const queryClient = new QueryClient();
     render(
       <QueryClientProvider client={queryClient}>
@@ -95,17 +106,8 @@ describe('App', () => {
         </MemoryRouter>
       </QueryClientProvider>
     );
-    const items = await screen.findAllByText(/KAKAO/);
-    expect(items.length).toBeGreaterThan(0);
-    expect(screen.getAllByText('마이 페이지 입니다')[0]).toBeInTheDocument();
-
-    await user.click(screen.getByText('구독'));
-    expect(screen.getByText('구독 페이지 입니다')).toBeInTheDocument();
-
-    await user.click(screen.getByText('녹화목록'));
-    expect(screen.getByText('녹화목록')).toBeInTheDocument();
-
-    await user.click(screen.getByText('알림'));
-    expect(screen.getByText('알림 페이지 입니다')).toBeInTheDocument();
+    expect(screen.getByText(/KAKAO/)).toBeInTheDocument();
+    expect(screen.getByText('로그아웃')).toBeInTheDocument();
+    expect(screen.getByText('회원탈퇴')).toBeInTheDocument();
   });
 });
