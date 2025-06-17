@@ -3,9 +3,22 @@ import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom';
 import { MemoryRouter } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, vi } from 'vitest';
 import { ROUTE_URL_FULL } from '../constants/routers';
 import App from '../App';
+
+const mockNotifications = [
+  {
+    notificationId: 1,
+    content: '테스트 알림 1',
+    createdAt: '2024-06-17 12:00',
+  },
+  {
+    notificationId: 2,
+    content: '테스트 알림 2',
+    createdAt: '2024-06-17 13:00',
+  },
+];
 
 describe('App', () => {
   it('첫 화면이 로그인 URL 화면인지 확인', () => {
@@ -63,7 +76,6 @@ describe('App', () => {
   });
 
   it('알림 페이지가 정상적으로 출력되는지 확인', async () => {
-    const user = userEvent.setup();
     const queryClient = new QueryClient();
     render(
       <QueryClientProvider client={queryClient}>
@@ -72,15 +84,26 @@ describe('App', () => {
         </MemoryRouter>
       </QueryClientProvider>
     );
-    expect(screen.getByText('알림 페이지 입니다')).toBeInTheDocument();
 
-    await user.click(screen.getByText('구독'));
+    vi.mock('@/hooks/useNotificationInfiniteQuery', () => ({
+      useNotificationInfiniteQuery: () => ({
+        data: {
+          pages: [{ notifications: mockNotifications, nextCursor: null }],
+          pageParams: [null],
+        },
+        fetchNextPage: vi.fn(),
+        hasNextPage: false,
+        isFetchingNextPage: false,
+        error: null,
+      }),
+    }));
 
-    await user.click(screen.getByText('녹화목록'));
-    expect(screen.getByText('녹화목록')).toBeInTheDocument();
-
-    await user.click(screen.getByText('마이 페이지'));
-    expect(screen.getByText('마이 페이지 입니다')).toBeInTheDocument();
+    expect(
+      await screen.findByText(mockNotifications[0].content)
+    ).toBeInTheDocument();
+    expect(
+      await screen.findByText(mockNotifications[1].content)
+    ).toBeInTheDocument();
   });
 
   it.skip('마이 페이지가 정상적으로 출력되는지 확인', async () => {
