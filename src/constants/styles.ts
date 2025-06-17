@@ -1,17 +1,25 @@
 //navigationBar styles
 export const NAVIGATION_STYLE = {
   background:
-    'fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[720px] h-16 bg-purple-500 flex justify-center shadow-xl z-10 rounded-t-xl',
-  buttonList: 'flex w-full h-full items-center justify-around',
-  button: 'flex-1 flex flex-col items-center justify-center',
+    'flex justify-center w-full max-w-screen-md h-16 bg-purple-500 shadow-xl z-10',
+  buttonList: 'flex w-full h-full items-center',
+  button: 'flex-1 flex flex-col',
   buttonImage: 'h-6 md:h-8 object-contain',
   buttonText: 'text-xs mt-1 font-bold',
 };
+
 //Layout styles
 export const LAYOUT_STYLE = {
   screenLayout: 'h-screen flex flex-col',
   mainContainer: 'flex-1 flex justify-center min-h-0 pb-4',
   pageContent: 'flex-1 flex flex-col w-full max-w-screen-md min-h-0 px-4 mt-4',
+};
+
+//notification styles
+export const NOTIFICATION_STYLE = {
+  item_list:
+    'flex-1 flex flex-col w-full max-w-screen-md hide-scrollbar overflow-y-auto overscroll-none items-center',
+  item: 'min-h-[100px]',
 };
 
 //Recording styles
@@ -20,6 +28,7 @@ export const RECORDING_STYLE = {
   pannelContainer: 'flex justify-between items-center px-4 mb-2',
   body: 'px-4 space-y-4',
 };
+
 //RecordingItem styles
 export const RECORDING_ITEM_STYLE = {
   header: 'flex items-start justify-between',
