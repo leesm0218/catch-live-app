@@ -5,6 +5,8 @@ import type {
   RecordingResponse,
 } from '../types/recording';
 import type { QueryFunctionContext } from '@tanstack/react-query';
+import { axiosInstance } from './axiosInstance';
+import { API_PATH } from '@/constants/api';
 
 export const getRecordings = async (
   ctx: QueryFunctionContext<['recordings', GetRecordingsParams]>
@@ -12,7 +14,7 @@ export const getRecordings = async (
   const [, params] = ctx.queryKey;
 
   try {
-    const response = await axios.get(`/api/recordings`, {
+    const response = await axiosInstance.get(API_PATH.RECORDING, {
       params,
     });
 

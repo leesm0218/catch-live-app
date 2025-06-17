@@ -1,8 +1,9 @@
 import type { LoginRequestDto } from '@/types/login';
-import axios from 'axios';
+import { axiosInstance } from './axiosInstance';
+import { API_PATH } from '@/constants/api';
 
 const postLogin = async (requestData: LoginRequestDto) => {
-  const response = await axios.post('/api/auth/login', requestData, {
+  const response = await axiosInstance.post(API_PATH.LOGIN, requestData, {
     headers: {
       'Content-Type': 'application/json',
     },
