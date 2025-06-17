@@ -48,9 +48,11 @@ const NotificationPage = () => {
 
   return (
     <div className={style.item_list}>
-      {notifications.map((props: NotificationItemProps) => (
-        <NotificationItem key={props.notificationId} {...props} />
-      ))}
+      {notifications.map(
+        ({ notificationId, ...rest }: NotificationItemProps) => (
+          <NotificationItem key={notificationId} {...rest} />
+        )
+      )}
       {isFetchingNextPage && <LoadingSpinner />}
       {hasNextPage && (
         <div

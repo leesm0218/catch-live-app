@@ -4,6 +4,11 @@ export type NotificationItemProps = {
   createdAt: string;
 };
 
+export type NotificationItemViewProps = {
+  content: string;
+  createdAt: string;
+};
+
 export type NotificationFetchResult = {
   notifications: NotificationItemProps[];
   nextCursor: number | null;
