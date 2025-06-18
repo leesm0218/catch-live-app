@@ -1,0 +1,16 @@
+import axios from 'axios';
+import { API_PATH } from '@/constants/api';
+import { axiosInstance } from './axiosInstance';
+
+export const fetchLogout = async () => {
+  try {
+    const res = await axiosInstance.post(API_PATH.LOGOUT);
+
+    return res.data.data;
+  } catch (error) {
+    if (axios.isAxiosError(error) && error.response?.status === 401) {
+      throw new Error('401');
+    }
+    throw new Error('로그아웃에 실패했습니다.');
+  }
+};

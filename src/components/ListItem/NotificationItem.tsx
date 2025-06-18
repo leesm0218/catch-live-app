@@ -7,8 +7,8 @@ export const NotificationItem = (props: NotificationItemViewProps) => {
 
   return (
     <div className={style.item}>
-      <div className={style.itemInfo}>{content}</div>
-      <div className={style.itemTime}>{toKstDate(createdAt)}</div>
+      <div className={style.item_info}>{content}</div>
+      <div className={style.item_time}>{toKstDate(createdAt)}</div>
     </div>
   );
 };

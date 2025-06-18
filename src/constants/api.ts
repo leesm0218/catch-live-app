@@ -17,5 +17,5 @@ export const API_PATH = {
   SUBSCRIPTION: '/subscriptions',
   RECORDING: '/recordings',
   NOTIFICATION: '/notifications',
-  USER: 'user/me',
+  USER: 'users/me',
 };

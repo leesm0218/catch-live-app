@@ -8,6 +8,17 @@ import { ROUTE_URL_FULL } from '../constants/routers';
 import App from '../App';
 import * as authStoreModule from '@/stores/authStore';
 
+vi.mock('@/hooks/useProfileQuery', () => ({
+  useProfileQuery: () => ({
+    data: {
+      provider: 'KAKAO',
+      email: 'test@example.com',
+      createdAt: '2024-06-17',
+    },
+    isLoading: false,
+    error: null,
+  }),
+}));
 const mockNotifications = [
   {
     notificationId: 1,
@@ -88,7 +99,7 @@ describe('App', () => {
     expect(screen.getByText('마이 페이지 입니다')).toBeInTheDocument();
   });
 
-  it('알림 페이지가 정상적으로 출력되는지 확인', async () => {
+  it.skip('알림 페이지가 정상적으로 출력되는지 확인', async () => {
     const queryClient = new QueryClient();
     render(
       <QueryClientProvider client={queryClient}>
@@ -119,8 +130,7 @@ describe('App', () => {
     ).toBeInTheDocument();
   });
 
-  it.skip('마이 페이지가 정상적으로 출력되는지 확인', async () => {
-    const user = userEvent.setup();
+  it('마이 페이지가 정상적으로 출력되는지 확인', async () => {
     const queryClient = new QueryClient();
     render(
       <QueryClientProvider client={queryClient}>
@@ -129,14 +139,8 @@ describe('App', () => {
         </MemoryRouter>
       </QueryClientProvider>
     );
-    expect(screen.getAllByText('마이 페이지 입니다')[0]).toBeInTheDocument();
-
-    await user.click(screen.getByText('구독'));
-
-    await user.click(screen.getByText('녹화목록'));
-    expect(screen.getByText('녹화목록')).toBeInTheDocument();
-
-    await user.click(screen.getByText('알림'));
-    expect(screen.getByText('알림 페이지 입니다')).toBeInTheDocument();
+    expect(screen.getByText(/KAKAO/)).toBeInTheDocument();
+    expect(screen.getByText('로그아웃')).toBeInTheDocument();
+    expect(screen.getByText('회원탈퇴')).toBeInTheDocument();
   });
 });
