@@ -48,7 +48,7 @@ const Subscription = () => {
   };
 
   return (
-    <div>
+    <>
       <p className={SUBSCRIPTION_PAGE_STYLE.paragraph}>
         <span className={SUBSCRIPTION_PAGE_STYLE.bold}>CHZZK </span>
         또는 <span className={SUBSCRIPTION_PAGE_STYLE.bold}>YOUTUBE</span>{' '}
@@ -85,7 +85,7 @@ const Subscription = () => {
           onClose={() => setAlertMessage('')}
         />
       )}
-    </div>
+    </>
   );
 };
 

@@ -1,19 +1,48 @@
-import type { GetRecordingsParams } from '@/types/recording';
+import { useInfiniteScroll } from '@/hooks/useInfiniteScroll';
+import { useRecordingsInfiniteQuery } from '@/hooks/useRecordingsQuery';
+import type { GetRecordingsParams, RecordingData } from '@/types/recording';
+import { throttle } from 'lodash';
+import { useCallback } from 'react';
 import RecordingItem from './RecordingItem';
-import { useRecordingsQuery } from '@/hooks/useRecordingsQuery';
 
 const RecordingContent = ({
   queryParams,
 }: {
   queryParams: GetRecordingsParams;
 }) => {
-  const { data } = useRecordingsQuery(queryParams);
+  const { data, fetchNextPage, hasNextPage, isFetchingNextPage } =
+    useRecordingsInfiniteQuery(queryParams);
+
+  const throttledFetchNextPage = useCallback(
+    throttle(
+      () => {
+        if (hasNextPage && !isFetchingNextPage) {
+          fetchNextPage();
+        }
+      },
+      1000,
+      { trailing: true }
+    ),
+    [fetchNextPage, hasNextPage, isFetchingNextPage]
+  );
+
+  const observerRef = useInfiniteScroll({
+    onIntersect: throttledFetchNextPage,
+    enabled: hasNextPage && !isFetchingNextPage,
+    threshold: 1,
+  });
 
   return (
     <>
-      {data?.recordings?.map((recording) => (
+      {data?.map((recording: RecordingData) => (
         <RecordingItem key={recording.recordingId} {...recording} />
       ))}
+      {hasNextPage && (
+        <div
+          ref={observerRef}
+          style={{ height: 2, background: 'transparent' }}
+        />
+      )}
     </>
   );
 };

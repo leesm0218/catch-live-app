@@ -1,14 +1,14 @@
 import { NOTIFICATION_STYLE as style } from '@/constants/styles';
-import type { NotificationItemProps } from '@/types/notificationTypes';
+import { toKstDate } from '@/utils/dateUtils';
+import type { NotificationItemViewProps } from '@/types/notificationTypes';
 
-export const NotificationItem = (props: NotificationItemProps) => {
-  const { notificationId, content, createdAt } = props;
+export const NotificationItem = (props: NotificationItemViewProps) => {
+  const { content, createdAt } = props;
 
   return (
     <div className={style.item}>
-      <div>{notificationId}</div>
-      <div>{content}</div>
-      <div>{createdAt}</div>
+      <div className={style.itemInfo}>{content}</div>
+      <div className={style.itemTime}>{toKstDate(createdAt)}</div>
     </div>
   );
 };
