@@ -1,7 +1,7 @@
 //navigationBar styles
 export const NAVIGATION_STYLE = {
   background:
-    'flex justify-center w-full max-w-screen-md h-16 bg-purple-500 shadow-xl z-10',
+    'flex justify-center w-full max-w-screen-md h-16 bg-purple-500 shadow-xl z-10 rounded-t-xl',
   buttonList: 'flex w-full h-full items-center',
   button: 'flex-1 flex flex-col',
   buttonImage: 'h-6 md:h-8 object-contain',
@@ -10,23 +10,26 @@ export const NAVIGATION_STYLE = {
 
 //Layout styles
 export const LAYOUT_STYLE = {
-  screenLayout: 'h-screen flex flex-col',
-  mainContainer: 'flex-1 flex justify-center min-h-0 pb-4',
-  pageContent: 'flex-1 flex flex-col w-full max-w-screen-md min-h-0 px-4 mt-4',
+  screenLayout: 'h-screen flex flex-col items-center',
+  mainContainer:
+    'flex-1 flex justify-center w-full max-w-screen-md min-h-0 pb-4',
+  pageContent: 'flex-1 flex flex-col w-full max-w-screen-md min-h-0 mt-4',
 };
 
 //notification styles
 export const NOTIFICATION_STYLE = {
   item_list:
-    'flex-1 flex flex-col w-full max-w-screen-md hide-scrollbar overflow-y-auto overscroll-none items-center',
-  item: 'min-h-[100px]',
+    'flex-1 flex flex-col w-full max-w-screen-md hide-scrollbar overflow-y-auto overscroll-none items-center scrollbar-hide',
+  item: 'w-full min-h-[70px] rounded-lg border border-gray-200 flex justify-between items-center my-1',
+  item_info: 'text-base font-semibold text-gray-900 p-3',
+  item_time: 'text-s text-gray-400 p-3',
 };
 
 //Recording styles
 export const RECORDING_STYLE = {
   headerContainer: 'text-3xl font-bold text-center mb-2',
-  pannelContainer: 'flex justify-between items-center px-4 mb-2',
-  body: 'px-4 space-y-4',
+  pannelContainer: 'flex justify-between gap-1 items-center mb-2',
+  body: 'flex-1 flex flex-col space-y-4 min-h-0 overflow-y-auto overscroll-none scrollbar-hide',
 };
 
 //RecordingItem styles
@@ -64,7 +67,7 @@ export const HEADER_STYLE = {
 
 //SearchBar styles
 export const SEARCH_BAR_STYLE = {
-  container: 'p-4 pb-2',
+  container: 'pb-2',
   input:
     'w-full rounded-xl text-lg px-4 py-2 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500',
 };
@@ -153,7 +156,7 @@ export const SIGNUP_PAGE_STYLE = {
 };
 
 export const INPUT_WITH_BUTTON_STYLE = {
-  container: 'p-4 pb-2 flex gap-2',
+  container: 'py-4 pb-2 flex gap-2',
   input:
     'w-full rounded-xl text-lg px-4 py-2 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500',
   button:
@@ -161,7 +164,7 @@ export const INPUT_WITH_BUTTON_STYLE = {
 };
 
 export const SUBSCRIPTION_PAGE_STYLE = {
-  itemList: 'space-y-4 px-4 pb-20 overflow-y-auto scrollbar-hide',
+  itemList: 'space-y-4 overflow-y-auto scrollbar-hide',
   paragraph: 'text-center text-m text-gray-500 mt-4 mb-2',
   bold: 'font-bold',
   boldWithColor: 'text-purple-500 font-semibold',
