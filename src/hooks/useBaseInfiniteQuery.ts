@@ -1,5 +1,6 @@
 import { useInfiniteQuery } from '@tanstack/react-query';
 import type { UseInfiniteQueryOptions } from '@tanstack/react-query';
+import type { InfiniteData } from '@tanstack/react-query';
 
 export function useBaseInfiniteQuery<
   T extends { nextCursor: number | null },
@@ -8,9 +9,21 @@ export function useBaseInfiniteQuery<
   key: string,
   params: P,
   fetchFunction: (params: P, cursor: number | null) => Promise<T>,
-  options?: UseInfiniteQueryOptions<T, Error, T, [string], number | null>
+  options?: UseInfiniteQueryOptions<
+    T,
+    Error,
+    InfiniteData<T, number | null>,
+    [string],
+    number | null
+  >
 ) {
-  return useInfiniteQuery({
+  return useInfiniteQuery<
+    T,
+    Error,
+    InfiniteData<T, number | null>,
+    [string],
+    number | null
+  >({
     queryKey: [key],
     queryFn: async ({ pageParam }: { pageParam: number | null }) => {
       return fetchFunction(params, pageParam);
