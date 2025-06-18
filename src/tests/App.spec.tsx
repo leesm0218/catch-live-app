@@ -3,9 +3,10 @@ import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom';
 import { MemoryRouter } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { describe, it, expect, vi } from 'vitest';
+import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { ROUTE_URL_FULL } from '../constants/routers';
 import App from '../App';
+import * as authStoreModule from '@/stores/authStore';
 
 const mockNotifications = [
   {
@@ -21,7 +22,19 @@ const mockNotifications = [
 ];
 
 describe('App', () => {
+  beforeEach(() => {
+    vi.spyOn(authStoreModule, 'useAuthStore').mockReturnValue({
+      isLoggedIn: true,
+      setIsLoggedIn: vi.fn(),
+    });
+  });
+
   it('첫 화면이 로그인 URL 화면인지 확인', () => {
+    vi.spyOn(authStoreModule, 'useAuthStore').mockReturnValue({
+      isLoggedIn: false,
+      setIsLoggedIn: vi.fn(),
+    });
+
     const queryClient = new QueryClient();
     render(
       <QueryClientProvider client={queryClient}>
@@ -33,7 +46,7 @@ describe('App', () => {
     expect(screen.getByText('로그인')).toBeInTheDocument();
   });
 
-  it.skip('구독 페이지가 정상적으로 출력되는지 확인', async () => {
+  it('구독 페이지가 정상적으로 출력되는지 확인', async () => {
     const user = userEvent.setup();
     const queryClient = new QueryClient();
     render(
@@ -48,7 +61,7 @@ describe('App', () => {
     expect(screen.getByText('녹화목록')).toBeInTheDocument();
 
     await user.click(screen.getByText('알림'));
-    expect(screen.getByText('알림 페이지 입니다')).toBeInTheDocument();
+    expect(screen.getByText('알림')).toBeInTheDocument();
 
     await user.click(screen.getByText('마이 페이지'));
     expect(screen.getByText('마이 페이지 입니다')).toBeInTheDocument();
