@@ -8,7 +8,7 @@ export const fetchNotifications = async (
   cursor: number | null
 ) => {
   const accessToken = localStorage.getItem(ACCESS_TOKEN_KEY);
-  let url = GET_NOTIFICATIONS_URL + `?size=${params.size}`;
+  let url = GET_NOTIFICATIONS_URL + `?size=${cursor ? params.size : 10}`;
   if (cursor !== undefined && cursor !== null) {
     url += `&cursor=${cursor}`;
   }
