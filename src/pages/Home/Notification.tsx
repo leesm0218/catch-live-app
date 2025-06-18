@@ -48,7 +48,7 @@ const NotificationPage = () => {
   const notifications = data?.pages.flatMap((page) => page.notifications) ?? [];
 
   return (
-    <div className={style.itemList}>
+    <div className={style.item_list}>
       {notifications.map(
         ({ notificationId, ...rest }: NotificationItemProps) => (
           <NotificationItem key={notificationId} {...rest} />

@@ -16,13 +16,26 @@ export const LAYOUT_STYLE = {
   pageContent: 'flex-1 flex flex-col w-full max-w-screen-md min-h-0 mt-4',
 };
 
+//profile styles
+export const PROFILE_STYLE = {
+  background: 'flex-1 flex flex-col justify-center items-center',
+  info_list:
+    'flex flex-col w-full max-w-md bg-gray-100 rounded-xl m-4 p-4 gap-4',
+  info_item: 'flex justify-between items-center',
+  info_label: 'text-gray-500 font-medium',
+  info_value: 'font-bold text-gray-900 text-right',
+  button_box: 'flex w-fit flex-row justify-center items-center gap-20',
+  button:
+    'flex-1 text-center rounded-xl text-lg font-bold text-gray-700 bg-purple-100 py-3 hover:bg-purple-300 transition',
+};
+
 //notification styles
 export const NOTIFICATION_STYLE = {
-  itemList:
+  item_list:
     'flex-1 flex flex-col w-full max-w-screen-md hide-scrollbar overflow-y-auto overscroll-none items-center scrollbar-hide',
   item: 'w-full min-h-[70px] rounded-lg border border-gray-200 flex justify-between items-center my-1',
-  itemInfo: 'text-base font-semibold text-gray-900 p-3',
-  itemTime: 'text-s text-gray-400 p-3',
+  item_info: 'text-base font-semibold text-gray-900 p-3',
+  item_time: 'text-s text-gray-400 p-3',
 };
 
 //Recording styles

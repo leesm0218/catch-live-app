@@ -10,6 +10,8 @@ import Signup from './pages/Signup';
 import SignupComplete from './pages/SignupComplete';
 import Subscription from './pages/Home/Subscription';
 
+import ProfilePage from '@/pages/Home/Profile';
+
 const App = () => {
   return (
     <Routes>
@@ -32,10 +34,7 @@ const App = () => {
           path={ROUTE_STRING.NOTIFICATION}
           element={<NotificationPage />}
         />
-        <Route
-          path={ROUTE_STRING.PROFILE}
-          element={<div>마이 페이지 입니다</div>}
-        />
+        <Route path={ROUTE_STRING.PROFILE} element={<ProfilePage />} />
       </Route>
     </Routes>
   );
