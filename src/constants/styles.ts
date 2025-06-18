@@ -19,12 +19,14 @@ export const LAYOUT_STYLE = {
 //profile styles
 export const PROFILE_STYLE = {
   background: 'flex-1 flex flex-col justify-center items-center',
-  info_list: 'flex flex-col',
-  info_item: 'flex-1 flex justify-between',
-  info_label: 'flex-1 text-gray-500',
-  info_value: 'flex-1 text-bold',
-  button_box: 'flex w-content flex-row justify-stretch items-center rounded-xl',
-  button: 'flex-1 text-center rounded-xl text-lg font-bold text-purple-700',
+  info_list:
+    'flex flex-col w-full max-w-md bg-gray-100 rounded-xl m-4 p-4 gap-4',
+  info_item: 'flex justify-between items-center',
+  info_label: 'text-gray-500 font-medium',
+  info_value: 'font-bold text-gray-900 text-right',
+  button_box: 'flex w-fit flex-row justify-center items-center gap-20',
+  button:
+    'flex-1 text-center rounded-xl text-lg font-bold text-gray-700 bg-purple-100 py-3 hover:bg-purple-300 transition',
 };
 
 //notification styles
