@@ -6,9 +6,5 @@ export function useProfileQuery() {
   return useQuery<Profile>({
     queryKey: ['profile'],
     queryFn: fetchProfile,
-    retry: (failureCount, error) => {
-      if (error?.message === '401') return false;
-      return failureCount < 3;
-    },
   });
 }
