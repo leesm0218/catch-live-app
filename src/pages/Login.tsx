@@ -1,6 +1,6 @@
-import GoogleLoginButton from '@/components/login/GoogleLoginButton';
-import KakaoLoginButton from '@/components/login/KakaoLoginButton';
-import NaverLoginButton from '@/components/login/NaverLoginButton';
+import GoogleLoginButton from '@/components/Login/GoogleLoginButton';
+import KakaoLoginButton from '@/components/Login/KakaoLoginButton';
+import NaverLoginButton from '@/components/Login/NaverLoginButton';
 import Header from '@/components/common/Header';
 import { LOGIN_STYLE } from '@/constants/styles';
 import { useAuthStore } from '@/stores/authStore';
