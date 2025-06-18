@@ -1,8 +1,8 @@
 import { clearToken, getAccessToken, setAccessToken } from '@/utils/authUtils';
 import { axiosInstance } from './axiosInstance';
 import { reissueAccessToken } from './refresh';
-import { ROUTE_URL_FULL } from '@/constants/routers';
 import { API_PATH } from '@/constants/api';
+import { authStore } from '@/stores/authStore';
 
 const AUTH_EXCLUDE_PATHS = [API_PATH.LOGIN, API_PATH.SIGNUP, API_PATH.REFRESH];
 
@@ -32,14 +32,16 @@ axiosInstance.interceptors.response.use(
         const newAccessToken = await reissueAccessToken();
         setAccessToken(newAccessToken);
         originalRequest.headers.Authorization = `Bearer ${newAccessToken}`;
+
         return axiosInstance(originalRequest);
       } catch (refreshError) {
         clearToken();
-        window.location.href = ROUTE_URL_FULL.LOGIN;
-        return Promise.reject(refreshError);
+        authStore.setIsLoggedIn(false);
+
+        throw refreshError;
       }
     }
 
-    return Promise.reject(error);
+    throw error;
   }
 );
