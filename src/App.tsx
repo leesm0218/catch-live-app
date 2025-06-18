@@ -9,6 +9,7 @@ import NotificationPage from '@/pages/Home/Notification';
 import Signup from './pages/Signup';
 import SignupComplete from './pages/SignupComplete';
 import Subscription from './pages/Home/Subscription';
+import '@/api/axiosInterceptors';
 
 const App = () => {
   return (
