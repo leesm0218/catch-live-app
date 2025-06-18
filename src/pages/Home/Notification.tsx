@@ -1,4 +1,4 @@
-import { useRef, useEffect } from 'react';
+import { useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { throttle } from 'lodash';
 import { NotificationItem } from '@/components/ListItem';
@@ -16,20 +16,21 @@ const NotificationPage = () => {
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage, error } =
     useNotificationInfiniteQuery({ size: size });
 
-  const throttledFetchNextPage = useRef<() => void>(() => {});
-
-  useEffect(() => {
-    throttledFetchNextPage.current = throttle(
+  const throttledFetchNextPage = useCallback(
+    throttle(
       () => {
-        fetchNextPage();
+        if (hasNextPage && !isFetchingNextPage) {
+          fetchNextPage();
+        }
       },
       1000,
       { trailing: true }
-    );
-  }, [fetchNextPage]);
+    ),
+    [fetchNextPage, hasNextPage, isFetchingNextPage]
+  );
 
   const observerRef = useInfiniteScroll({
-    onIntersect: throttledFetchNextPage.current,
+    onIntersect: throttledFetchNextPage,
     enabled: hasNextPage && !isFetchingNextPage,
     threshold: 1,
   });
@@ -47,10 +48,12 @@ const NotificationPage = () => {
   const notifications = data?.pages.flatMap((page) => page.notifications) ?? [];
 
   return (
-    <div className={style.item_list}>
-      {notifications.map((props: NotificationItemProps) => (
-        <NotificationItem key={props.notificationId} {...props} />
-      ))}
+    <div className={style.itemList}>
+      {notifications.map(
+        ({ notificationId, ...rest }: NotificationItemProps) => (
+          <NotificationItem key={notificationId} {...rest} />
+        )
+      )}
       {isFetchingNextPage && <LoadingSpinner />}
       {hasNextPage && (
         <div
