@@ -4,18 +4,18 @@ import type {
   GetRecordingsParams,
   RecordingResponse,
 } from '../types/recording';
-import type { QueryFunctionContext } from '@tanstack/react-query';
+import { ACCESS_TOKEN_KEY } from '@/constants/api';
 
 export const getRecordings = async (
-  ctx: QueryFunctionContext<['recordings', GetRecordingsParams]>
+  params: GetRecordingsParams
 ): Promise<ApiResponse<RecordingResponse>> => {
-  const [, params] = ctx.queryKey;
+  const accessToken = localStorage.getItem(ACCESS_TOKEN_KEY);
+  axios.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
 
   try {
-    const response = await axios.get(`/api/recordings`, {
+    const response = await axios.get('/api/recordings', {
       params,
     });
-
     return response.data;
   } catch (err) {
     if (axios.isAxiosError(err) && err.response?.status === 400) {
