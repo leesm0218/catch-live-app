@@ -75,7 +75,9 @@ describe('App', () => {
     expect(screen.getByText('알림')).toBeInTheDocument();
 
     await user.click(screen.getByText('마이 페이지'));
-    expect(screen.getByText('마이 페이지 입니다')).toBeInTheDocument();
+    expect(
+      screen.getByRole('heading', { name: '마이 페이지' })
+    ).toBeInTheDocument();
   });
 
   it.skip('녹화목록 페이지가 정상적으로 출력되는지 확인', async () => {
