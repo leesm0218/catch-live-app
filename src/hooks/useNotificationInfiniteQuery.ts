@@ -20,9 +20,6 @@ export function useBaseInfiniteQuery<
       return Number(lastPage.nextCursor) > 0 ? lastPage.nextCursor : null;
     },
     initialPageParam: null,
-    refetchOnWindowFocus: false,
-    refetchIntervalInBackground: false,
-    refetchInterval: false,
   });
 }
 

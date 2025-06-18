@@ -1,15 +1,36 @@
 import { getRecordings } from '@/api/recording';
-import { API_RETRY_COUNT, API_STALE_TIME } from '@/constants/api';
-import type { GetRecordingsParams } from '@/types/recording';
-import { useSuspenseQuery } from '@tanstack/react-query';
+import type {
+  GetRecordingsParams,
+  RecordingData,
+  RecordingResponse,
+} from '@/types/recording';
+import type { ApiResponse } from '@/types/serverResponse';
+import { useInfiniteQuery } from '@tanstack/react-query';
 
-export const useRecordingsQuery = (params: GetRecordingsParams) =>
-  useSuspenseQuery({
+export const useRecordingsInfiniteQuery = (
+  params: Omit<GetRecordingsParams, 'cursor'>
+) =>
+  useInfiniteQuery<
+    ApiResponse<RecordingResponse>,
+    Error,
+    RecordingData[],
+    ['recordings', Omit<GetRecordingsParams, 'cursor'>],
+    string | null
+  >({
     queryKey: ['recordings', params],
-    queryFn: getRecordings,
-    staleTime: API_STALE_TIME,
-    refetchOnWindowFocus: true,
+    queryFn: async ({ pageParam, queryKey }) => {
+      const [, baseParams] = queryKey;
+      const cursor = pageParam ?? null;
+      const size = cursor ? 5 : 10;
+
+      return await getRecordings({
+        ...baseParams,
+        cursor,
+        size,
+      });
+    },
+    initialPageParam: null,
+    getNextPageParam: (lastPage) => lastPage.data.nextCursor ?? null,
     refetchOnMount: true,
-    retry: API_RETRY_COUNT,
-    select: (res) => res.data,
+    select: (res) => res.pages.flatMap((page) => page.data.recordings),
   });

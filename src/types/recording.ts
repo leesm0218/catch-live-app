@@ -39,6 +39,6 @@ export type GetRecordingsParams = {
   platforms?: Platform;
   sortBy?: 'started_at' | 'title';
   order?: 0 | 1;
-  cursor?: string;
+  cursor?: string | null;
   size?: number;
 };

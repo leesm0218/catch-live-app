@@ -18,11 +18,11 @@ export const LAYOUT_STYLE = {
 
 //notification styles
 export const NOTIFICATION_STYLE = {
-  item_list:
+  itemList:
     'flex-1 flex flex-col w-full max-w-screen-md hide-scrollbar overflow-y-auto overscroll-none items-center scrollbar-hide',
   item: 'w-full min-h-[70px] rounded-lg border border-gray-200 flex justify-between items-center my-1',
-  item_info: 'text-base font-semibold text-gray-900 p-3',
-  item_time: 'text-s text-gray-400 p-3',
+  itemInfo: 'text-base font-semibold text-gray-900 p-3',
+  itemTime: 'text-s text-gray-400 p-3',
 };
 
 //Recording styles

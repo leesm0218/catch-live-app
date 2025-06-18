@@ -16,9 +16,12 @@ export function useInfiniteScroll({
   useEffect(() => {
     if (!enabled) return;
     const observer = new window.IntersectionObserver(
-      (entries) => {
+      (entries, obs) => {
         if (entries[0].isIntersecting) {
           onIntersect();
+          if (observerRef.current) {
+            obs.unobserve(observerRef.current); // 중복 방지
+          }
         }
       },
       { threshold }
