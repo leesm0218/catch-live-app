@@ -17,6 +17,7 @@ export function LogOutButton() {
   const handleLogout = useCallback(async () => {
     try {
       await fetchLogout();
+      clearLocalStorage();
       setAlertMessage(LOGOUT_SUCCESS_MODAL_MESSAGE);
     } catch {
       setAlertMessage(LOGOUT_FAIL_MODAL_MESSAGE);
@@ -26,7 +27,6 @@ export function LogOutButton() {
   const handleClose = () => {
     setAlertMessage('');
     if (alertMessage === LOGOUT_SUCCESS_MODAL_MESSAGE) {
-      clearLocalStorage();
       navigate(ROUTE_URL_FULL.LOGIN);
     }
   };
