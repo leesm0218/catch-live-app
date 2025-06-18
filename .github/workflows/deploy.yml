@@ -1,4 +1,4 @@
-name: CI/CD client to AWS S32
+name: CI/CD client to AWS S3
 
 on:
   workflow_dispatch:
