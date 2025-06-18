@@ -1,15 +1,12 @@
 import axios from 'axios';
 import type { Profile } from '@/types/profile';
-import { GET_PROFILE_API_URL, ACCESS_TOKEN_KEY } from '@/constants/api';
+import { API_PATH } from '@/constants/api';
+import { axiosInstance } from './axiosInstance';
 
 export const fetchProfile = async (): Promise<Profile> => {
-  const accessToken = localStorage.getItem(ACCESS_TOKEN_KEY);
   try {
-    const res = await axios.get(GET_PROFILE_API_URL, {
-      headers: {
-        Authorization: `Bearer ${accessToken || ''}`,
-      },
-    });
+    const res = await axiosInstance.get(API_PATH.USER);
+
     return res.data.data as Profile;
   } catch (error) {
     if (axios.isAxiosError(error) && error.response?.status === 401) {

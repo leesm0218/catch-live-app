@@ -1,20 +1,21 @@
 import axios from 'axios';
 import type { NotificationItemProps } from '@/types/notificationTypes';
-import { GET_NOTIFICATIONS_URL, ACCESS_TOKEN_KEY } from '@/constants/api';
+import { ACCESS_TOKEN_KEY, API_PATH } from '@/constants/api';
 import type { NotificationFetchParam } from '@/types/notificationTypes';
+import { axiosInstance } from './axiosInstance';
 
 export const fetchNotifications = async (
   params: NotificationFetchParam,
   cursor: number | null
 ) => {
   const accessToken = localStorage.getItem(ACCESS_TOKEN_KEY);
-  let url = GET_NOTIFICATIONS_URL + `?size=${cursor ? params.size : 10}`;
+  let url = API_PATH.NOTIFICATION + `?size=${cursor ? params.size : 10}`;
   if (cursor !== undefined && cursor !== null) {
     url += `&cursor=${cursor}`;
   }
 
   try {
-    const res = await axios.get(url, {
+    const res = await axiosInstance.get(url, {
       headers: {
         Authorization: `Bearer ${accessToken || ''}`,
       },

@@ -1,8 +1,9 @@
 import type { SignupRequestDto } from '@/types/signup';
-import axios from 'axios';
+import { axiosInstance } from './axiosInstance';
+import { API_PATH } from '@/constants/api';
 
 const postSignup = async (requestData: SignupRequestDto) => {
-  const { data } = await axios.post('/api/auth/signup', requestData);
+  const { data } = await axiosInstance.post(API_PATH.SIGNUP, requestData);
 
   return data;
 };

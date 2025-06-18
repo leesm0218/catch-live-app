@@ -1,19 +1,11 @@
 import axios from 'axios';
-import { POST_LOGOUT_API_URL, ACCESS_TOKEN_KEY } from '@/constants/api';
+import { API_PATH } from '@/constants/api';
+import { axiosInstance } from './axiosInstance';
 
 export const fetchLogout = async () => {
-  const accessToken = localStorage.getItem(ACCESS_TOKEN_KEY);
-
   try {
-    const res = await axios.post(
-      POST_LOGOUT_API_URL,
-      {},
-      {
-        headers: {
-          Authorization: `Bearer ${accessToken || ''}`,
-        },
-      }
-    );
+    const res = await axiosInstance.post(API_PATH.LOGOUT);
+
     return res.data.data;
   } catch (error) {
     if (axios.isAxiosError(error) && error.response?.status === 401) {

@@ -4,16 +4,14 @@ import type {
   GetRecordingsParams,
   RecordingResponse,
 } from '../types/recording';
-import { ACCESS_TOKEN_KEY } from '@/constants/api';
+import { axiosInstance } from './axiosInstance';
+import { API_PATH } from '@/constants/api';
 
 export const getRecordings = async (
   params: GetRecordingsParams
 ): Promise<ApiResponse<RecordingResponse>> => {
-  const accessToken = localStorage.getItem(ACCESS_TOKEN_KEY);
-  axios.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
-
   try {
-    const response = await axios.get('/api/recordings', {
+    const response = await axiosInstance.get(API_PATH.RECORDING, {
       params,
     });
     return response.data;

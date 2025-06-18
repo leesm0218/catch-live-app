@@ -1,16 +1,19 @@
 import Header from '@/components/common/Header';
 import ProgressBar from '@/components/signup/ProgressBar';
 import SignupButton from '@/components/signup/SignupButton';
+import { ROUTE_URL_FULL } from '@/constants/routers';
 import { SIGNUP_PAGE_STYLE } from '@/constants/styles';
 import useSignupMutation from '@/hooks/useSignupMutation';
+import { useAuthStore } from '@/stores/authStore';
 import { useRef, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { Navigate, useLocation } from 'react-router-dom';
 
 const Signup = () => {
   const nicknameRef = useRef<HTMLInputElement>(null);
   const [errorMessage, setErrorMessage] = useState<string>('');
   const location = useLocation();
   const { provider, email } = location.state;
+  const { isLoggedIn } = useAuthStore();
 
   const onErrorCallback = (errorCode: string) => {
     if (errorCode === '3400') {
@@ -36,6 +39,8 @@ const Signup = () => {
 
     mutateSignup({ provider, email, nickname });
   };
+
+  if (isLoggedIn) return <Navigate to={ROUTE_URL_FULL.SUBSCRIPTION} />;
 
   return (
     <div className={SIGNUP_PAGE_STYLE.container}>

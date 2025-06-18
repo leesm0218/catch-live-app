@@ -1,15 +1,10 @@
 import axios from 'axios';
-import { ACCESS_TOKEN_KEY, DELETE_SIGNUP_API_URL } from '@/constants/api';
+import { API_PATH } from '@/constants/api';
+import { axiosInstance } from './axiosInstance';
 
 export const fetchSignOut = async () => {
-  const accessToken = localStorage.getItem(ACCESS_TOKEN_KEY);
-
   try {
-    const res = await axios.delete(DELETE_SIGNUP_API_URL, {
-      headers: {
-        Authorization: `Bearer ${accessToken || ''}`,
-      },
-    });
+    const res = await axiosInstance.delete(API_PATH.USER);
     return res.data.data;
   } catch (error) {
     if (axios.isAxiosError(error) && error.response?.status === 401) {

@@ -3,11 +3,15 @@ import ProgressBar from '@/components/signup/ProgressBar';
 import SignupButton from '@/components/signup/SignupButton';
 import { ROUTE_URL_FULL } from '@/constants/routers';
 import { SIGNUP_PAGE_STYLE } from '@/constants/styles';
+import { useAuthStore } from '@/stores/authStore';
 import { CheckIcon } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 const SignupComplete = () => {
   const navigate = useNavigate();
+  const { isLoggedIn } = useAuthStore();
+
+  if (isLoggedIn) return <Navigate to={ROUTE_URL_FULL.SUBSCRIPTION} />;
 
   return (
     <div className={SIGNUP_PAGE_STYLE.container}>

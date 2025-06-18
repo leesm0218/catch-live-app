@@ -1,18 +1,19 @@
 import type { ApiResponse } from '@/types/serverResponse';
 import type { SubscriptionResponse } from '@/types/subscription';
-import axios from 'axios';
+import { axiosInstance } from './axiosInstance';
+import { API_PATH } from '@/constants/api';
 
 export const getSubscriptions = async (): Promise<
   ApiResponse<SubscriptionResponse>
 > => {
-  const response = await axios.get('/api/subscriptions/');
+  const response = await axiosInstance.get(API_PATH.SUBSCRIPTION);
   return response.data;
 };
 
 export const deleteSubscription = async (subscriptionId: number) => {
-  await axios.delete(`/api/subscriptions/${subscriptionId}`);
+  await axiosInstance.delete(`${API_PATH.SUBSCRIPTION}/${subscriptionId}`);
 };
 
 export const postSubscription = async (channelUrl: string) => {
-  await axios.post('/api/subscriptions/', { channelUrl });
+  await axiosInstance.post(API_PATH.SUBSCRIPTION, { channelUrl });
 };
